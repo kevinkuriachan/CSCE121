@@ -1,0 +1,631 @@
+
+<!-- saved from url=(0051)http://robotics.cs.tamu.edu/dshell/cs121/l2/l2.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+
+  
+
+  <meta name="title" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <meta name="DC.Title" content="">
+  <meta name="DC.Author" content="">
+  <meta name="DC.Subject.Keyword" content="">
+  <meta name="DC.Description" content="">
+
+  <link rel="shortcut icon" href="http://robotics.cs.tamu.edu/dshell/cs121/images/favicon.ico">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab2_files/basic.css"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab2_files/siteName.css"> 
+  <link rel="stylesheet" type="text/css" media="print" href="./lab2_files/print.css"> 
+
+  <link rel="stylesheet" href="./lab2_files/atom-one-light.css"> 
+  <script src="./lab2_files/highlight.pack.js.download"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+
+  pre.tight {
+    margin-top: -1.1em;
+    margin-bottom: -1.1em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  code {
+    font-size: 120%; 
+  }
+
+.hinthidden {
+    visibility: hidden;
+    background: #eee;
+    border: 1px dotted #aaa;
+    padding: 0px;
+    }
+.hinthidden:hover {
+    visibility: visible;
+}
+
+.hintvisible {
+    background-color: #eeeeee; 
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding-left: 6px; 
+    padding-right: 6px; 
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+    font-size: 60%;
+    visibility: visible;
+}
+
+.hinttext {
+    color: #999;
+    font-size: 75%; 
+}
+
+</style>
+
+
+<style></style></head>
+
+<body>
+
+<div id="page">
+  <div id="header">
+    <div id="headerLogo">
+      <a href="http://www.tamu.edu/" title="Texas A&amp;M University Home"><img src="./lab2_files/primaryMark.gif" alt="Texas A&amp;M University primary mark" height="42" width="171"></a>
+    </div>
+
+    <a href="http://robotics.cs.tamu.edu/dshell/cs121/l2/l2.html#skipNav"><img src="./lab2_files/spacer.gif" alt="" style="float: left;" height="1" width="1"></a>
+
+    <div id="topTitle">
+      <h1>Department of Computer Science and Engineering</h1>
+    </div>
+
+  <div id="imageRotation">
+          <a href="http://robotics.cs.tamu.edu/" title="Home Link"><img src="./lab2_files/insideSample3.jpg" style="display: block;" alt="Sample Image" height="40" width="750"></a>
+  </div>
+
+  <div id="content">
+
+  <div id="pageContent">
+    <a name="skipNav"></a>
+
+
+<!-- ==================== BEGIN YOUR CONTENT HERE ==================== -->
+
+<h1 class="pageTitle">CSCE 121: Introduction to Program Design and Concepts</h1>
+
+<h1>Lab Exercise Two</h1>
+<br>
+
+<h2>Objective</h2>
+<p class="bodytext">
+The aim of this lab work is to practice writing functions. They are
+an essential concept as they allow us to first make building blocks,
+then use our own building blocks to construct grander things, these 
+themselves becoming building blocks in their own right for even 
+larger things.
+</p>
+
+<h3>How far must I get?</h3>
+<p class="bodytext">
+This lab is assigned for the entire week. You should complete the
+questions that you're not able to finish in the lab session on your own.
+If you are finding it tough to keep up the pace, it may be wise to look
+over the questions and make a first attempt before arriving at your lab session.
+That way you can use the time most effectively in getting help with the
+questions that are sticking points for you.
+</p>
+
+<hr>
+
+<h2>Warm in here?</h2>
+<p class="bodytext">
+Write a function that converts temperatures from degrees Fahrenheit to Celsius.  Write a second function that converts temperatures from degrees Celsius to Fahrenheit.
+Now write a function that prompts the user for a temperature and its units,
+then converts it into the other units.
+</p>
+
+<p class="bodytext">
+Here's a sample of five runs, showing the desired behavior:
+</p><pre>:: ./temps 
+Please enter a temperature: 103
+Is that in Fahrenheit or Celsius? [F/C] F
+Well, 103F is 39.4444C.
+
+:: ./temps 
+Please enter a temperature: 11.1
+Is that in Fahrenheit or Celsius? [F/C] F
+Well, 11.1F is -11.6111C.
+
+:: ./temps 
+Please enter a temperature: 10
+Is that in Fahrenheit or Celsius? [F/C] C
+Well, 10C is 50F.
+
+:: ./temps 
+Please enter a temperature: 45
+Is that in Fahrenheit or Celsius? [F/C] f
+Well, 45F is 7.22222C.
+
+:: ./temps 
+Please enter a temperature: 7.2
+Is that in Fahrenheit or Celsius? [F/C] c
+Well, 7.2C is 44.96F.
+</pre>
+<p></p>
+
+
+<p class="bodytext">
+Use <a href="https://en.wikipedia.org/wiki/Function_composition">mathematical function composition</a> to test both the functions by checking that together
+they form the identity function.
+</p>
+
+<h3>Basic Sums</h3>
+<p class="bodytext">
+Write a function <code>SumOfNums</code> that calculates and returns the sum of
+the numbers from 1 to n (where n is a positive integer parameter). The statement
+</p><pre class="tight"><code class="hljs cpp"><span class="hljs-built_in">cout</span> &lt;&lt; SumOfNums(<span class="hljs-number">100</span>);
+</code></pre>
+<p></p>
+<p class="bodytext">
+should cause "5050" to be printed since 1+2+⋯+100 = 5050.
+</p>
+
+<h3>Summing Digits</h3>
+<p class="bodytext">
+Write a function <code>SumOfDigits</code> that takes as a parameter a non-negative integer x and calculates the sum
+of the (decimal) digits that comprise x. For example, the line
+</p>
+
+<pre class="tight"><code class="hljs cpp"><span class="hljs-built_in">cout</span> &lt;&lt; SumOfDigits(<span class="hljs-number">15290</span>);</code></pre>
+<p class="bodytext">
+should print "17" because 1+5+2+9+0 = 17.
+</p>
+
+<p class="bodytext">
+For this exercise, it might be helpful to declare some variables of type <code>long</code> rather than <code>int</code> to give you the chance to test some
+longer, more juicy, instances.
+</p>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+            You can get the rightmost decimal digit of an integer via the remainder of division by 10.
+            Moreover, first dividing by 10 and then taking the remainder yields the next digit. Repeating this process will give any digit you desire.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+
+
+<h3>smuS</h3>
+<p class="bodytext">
+Write a function <code>SumWithDigitsReversed</code> that takes a (non-negative integer) parameter x, and sums
+x with the number constructed from x with its decimal digits reversed. For example, the line
+</p><pre class="tight"><code class="hljs cpp"><span class="hljs-built_in">cout</span> &lt;&lt; SumWithDigitsReversed(<span class="hljs-number">15290</span>);
+</code></pre>
+<p></p>
+<p class="bodytext">
+should produce "24541" since 15290 + 09251 = 24541.
+</p>
+
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+        Build on the techniques used in the previous question.
+        Additionally, for this question it can be useful to write some helper functions, two that are particularly handy are:
+            <code>NumDigits(n)</code> to get the number of digits in a number;
+            <code>PowTen(m)</code> to compute powers of ten easily.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+
+
+<h3>Numbers I</h3>
+<p class="bodytext">
+Write a function that determines whether its input is a prime number. 
+The following is how you might start the definition of the function.
+</p>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">is_prime</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span>
+</span>{ <span class="hljs-comment">// returns true if and only if n is a prime number</span>
+    ...
+}
+</code></pre>
+
+<h3>Numbers II</h3>
+<p class="bodytext">
+Using your function from the previous question, prompt the user for an upper bound,
+then print all primes up to that number. Below is an example. You should attempt
+to match the output format exactly.
+</p>
+<pre><code class="hljs">Enter an upper limit: 72
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71
+</code></pre>
+
+<h3>Numbers III</h3>
+<p class="bodytext">
+First asserted in a letter penned to Euler in 1742, 
+Goldbach's conjecture states that:<br>
+<i>every positive even number greater than 2 is the sum of two
+prime numbers</i>.<br>
+</p>
+<a href="./lab2_files/Letter_Goldbach-Euler.jpg"><img src="./lab2_files/Letter_Goldbach-Euler.jpg" width="160" height="164" alt="Christian Goldbach&#39;s Letter to Leonard Euler" align="right" style="margin:18px"></a>
+<p class="bodytext">
+Examples: <i>42 = 5 + 37, 16 = 3 + 13, 64 = 3 + 61</i>.<br>
+</p>
+
+<p class="bodytext">
+Write a program that asks for an integer and, after checking that it is even
+and greater than 2, prints two primes whose sum is the input.
+</p>
+
+<p class="bodytext">
+The statement above, though simple, is one of the most famous facts of number theory whose 
+proof remains elusive.  Actually, the wording above isn't exactly how
+Goldbach expressed the claim to Euler, you can see the equivalent original
+statement in the associated <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Wikipedia
+article</a> if you are interested.  It has been verified to be true up to 
+enormous numbers (far, far larger than our puny <code>int</code> variables
+will hold), so if your program can't find a pair that is a bug in your code.
+</p>
+
+
+<h2>Logic</h2>
+<h3>Leap Years</h3>
+<p class="bodytext">
+Write a program that prompts the user for a year and then provides an output
+indicating whether that year is a <a href="https://en.wikipedia.org/wiki/Leap_year">leap year</a> or not. 
+The rule for the Gregorian calendar, is as follows:<br>
+<i>
+A year is a leap year if it is divisible by 4,
+unless it is divisible by 100 in which case it is not, unless it
+is divisible by 400 in which case it is.
+</i><br>
+</p>
+
+<p class="bodytext">
+What are good test cases for your program?
+</p>
+
+<h3>Implementing Nand, Nor, and Exclusive-or</h3>
+<p class="bodytext">
+In class we saw the operations that C++ uses to represent logical <i>and</i>, <i>or</i>, and <i>not</i> operations.
+Three other common ones are <i>nand</i>, <i>nor</i>, and <i>exclusive-or</i>. 
+Logical operations are often described using tables, which give a value for all
+possible input combinations. The three tables below specify 
+<i>nand</i>, <i>nor</i>, and <i>exclusive-or</i>, respectively. 
+You read the table as follows:
+pick the column representing the first input, the row 
+representing the second input, and the value at the intersection of the row and column is the output
+of the operation.
+</p>
+
+<center>
+<table>
+<tbody><tr>
+<td style="padding-left: 20px;">
+ <table style="border: 1px solid #444; background-color: white;">
+ <tbody><tr><th colspan="3" style="background-color: black; color: white; font-size: 80%;">NAND</th></tr>
+ <tr><th></th><th>False</th><th>True</th></tr>
+ <tr><th>False</th><td>True</td><td>True</td></tr>
+ <tr><th>True</th><td>True</td><td>False</td></tr>
+ </tbody></table>
+</td>
+<td style="padding-left: 20px;">
+ <table style="border: 1px solid #444; background-color: white;">
+ <tbody><tr><th colspan="3" style="background-color: black; color: white; font-size: 80%;">NOR</th></tr>
+ <tr><th></th><th>False</th><th>True</th></tr>
+ <tr><th>False</th><td>True</td><td>False</td></tr>
+ <tr><th>True</th><td>False</td><td>False</td></tr>
+ </tbody></table>
+</td>
+<td style="padding-left: 20px;">
+ <table style="border: 1px solid #444; background-color: white;">
+ <tbody><tr><th colspan="3" style="background-color: black; color: white; font-size: 80%;">EXCLUSIVE-OR</th></tr>
+ <tr><th></th><th>False</th><th>True</th></tr>
+ <tr><th>False</th><td>False</td><td>True</td></tr>
+ <tr><th>True</th><td>True</td><td>False</td></tr>
+ </tbody></table>
+</td>
+</tr>
+</tbody></table>
+</center>
+
+<p class="bodytext">
+Write functions that compute these operations. Below are three definitions to
+copy-and-paste into your editor for use as a starting point.
+
+</p><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">nand</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> a, <span class="hljs-keyword">bool</span> b)</span>
+</span>{ <span class="hljs-comment">// is (a NAND b)</span>
+    ...
+}
+
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">nor</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> a, <span class="hljs-keyword">bool</span> b)</span>
+</span>{ <span class="hljs-comment">// is (a NOR b)</span>
+    ...
+}
+
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">exclusive_or</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> a, <span class="hljs-keyword">bool</span> b)</span>
+</span>{ <span class="hljs-comment">// is (a EXCLUSIVE-OR b)</span>
+    ...
+}</code></pre>
+<p></p>
+
+<!--
+<p class="bodytext">
+Now, suppose that the person sitting next to you in the lab, a budding C++naut,
+tells you that they have a cunning idea to make their code run faster. When
+they write their <i>nand</i> they observe that when the first argument is
+<code>False</code> they can return <code>False</code> without even
+looking at the second one. 
+</p>
+
+<p class="bodytext">
+Are they right?  
+</p>
+
+
+<p class="bodytext">
+Does the same reasoning, about shortcutting evaluation, hold for C++'s built-in <code>&amp;&amp;</code>?
+</p>
+
+<div class="hinthidden">
+<table><tr><td valign="center">
+<table class="hintvisible"><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tr>
+        <td class="hinttext">
+            The student can get away with it, but C++'s built-in operator can't. Try to explain why.
+        </td>
+    </tr>
+</table></td></tr>
+</table>
+</div>
+-->
+
+<h2>Efficient Integer Powers</h2>
+<p class="bodytext">
+Because multiplication is a fairly involved process, in the interests of speed
+it is common to seek ways to minimize the number of multiplication operations
+needed to arrive at some result. Consider the following example, where we're 
+raising a number to the fifth power.
+</p>
+
+<p class="bodytext">
+A naïve approach is simply to multiply a number by itself over and over again:<br>
+<span style="padding-left: 15px;"></span>56<sup>5</sup> = 56×56×56×56×56 = 550731776.&nbsp;<span style="padding-left: 95px; border-top: 2px dotted #999; font-size:4px;">&nbsp;</span>Needs a total of 4 multiplications.<br>
+&nbsp;<br>
+Oftentimes we can do better. Here we can see that by using squaring we can save a multiplication. Raising to larger powers can yield larger savings.<br>
+<span style="padding-left: 15px; font-size:90%">Step 1:</span> Let <i>u</i> = 56×56<br>
+<span style="padding-left: 15px; font-size:90%">Step 2:</span> Now let <i>v</i> = <i>u</i>×<i>u</i><br>
+<span style="padding-left: 15px; font-size:90%">Step 3:</span> Then 56<sup>5</sup> = <i>v</i>×56 = 550731776.&nbsp;<span style="padding-left: 95px; border-top: 2px dotted #999; font-size:4px;">&nbsp;</span>Gives the result in a total of 3 multiplications.<br>
+</p>
+
+<p class="bodytext">
+In this exercise you'll write a function to raise a number to an integer power
+using this repeated squaring approach. It is broken into pieces to provide some 
+guidance.
+</p>
+
+<h3>The Easy Powers</h3>
+
+<p class="bodytext">
+The first step is to ask which powers can we get just by squaring?
+</p>
+
+<p class="bodytext">
+Well if we're given <i>b</i> and <i>m</i> and asked to
+compute <i>b<sup>m</sup></i> then if <i>m</i> = 2 it is easy.
+Squaring twice gives the solution easily when <i>m</i> = 4, and
+doing it three times when <i>m</i> = 8.
+Obviously the pattern emerging here is that when the exponent is a power of 2
+we can get the solution in a straightforward manner.
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">raiseExpPow2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> m)</span>
+</span>{ <span class="hljs-comment">// compute (b^m) when m is a power of two.</span>
+    ...
+}
+</code></pre>
+
+<h3>General Powers</h3>
+
+<p class="bodytext">
+The pattern that shows how to proceed for other exponents may also be obvious if
+you're comfortable with numbers in binary (i.e., base 2). 
+In the example given above, the exponent was 5 and, expressing the number in binary, we see that 5<sub>10</sub> = 101<sub>2</sub>. (Where
+I've used the fairly standard practice of having 
+the subscripts indicate the base of the number system.)<br>
+To get 56<sup>5</sup> we computed it as:
+<span style="padding-left: 15px;"></span>56<sup>5</sup> = 
+(56<sup>2</sup>)<sup>2</sup>
+&nbsp;×&nbsp; (56).<br>
+</p>
+
+<p class="bodytext">
+More generally, you can compute <i>b<sup>m</sup></i> by using your function
+<code>raiseExpPow2</code> and the binary digits of <i>m</i>.
+The really great news is that in the "Summing Digits" exercise above, you were 
+able to pull off the digits of a number. In that case you did it base 10, but
+the same process will pull them off base 2.
+</p>
+
+<p class="bodytext">
+A smart thing to do is generalize the functions you wrote for "Summing Digits" to take the base as a parameter.
+Next, write a function to raise <i>b</i> to an arbitrary (positive integer) <i>m</i>.
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">raiseExpPow</span><span class="hljs-params">(<span class="hljs-keyword">int</span> b, <span class="hljs-keyword">int</span> m)</span>
+</span>{ <span class="hljs-comment">// compute (b^m) when m is any positive integer</span>
+    ...
+}
+</code></pre>
+
+
+<h3>Smarter Binary Digits</h3>
+
+<p class="bodytext">
+So far so good but if you're doing divisions (likely both <code>/</code> and
+<code>%</code>) to get the binary digits (bits) of the exponent, then you're 
+actually doing <i>more</i> work, not less.
+</p>
+
+<p class="bodytext">
+The trick is that since the machine actually represents the numbers in base 2,
+it is extremely easy to get the bits directly. (This is like how, when you
+were in grade school, you didn't have any trouble with the 10 times
+table—the base trivializes things.) </p>
+
+<p class="bodytext">
+Here is a function that will give you the <code>i</code><sup>th</sup> bit of a number.
+Be careful. It is especially deceptive because we've seen both the
+<code>&gt;&gt;</code> and the <code>&amp;</code> before (we'll see much more of
+that last character). They're being used to mean entirely new things in this code.
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getBit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> i)</span>
+</span>{ <span class="hljs-comment">// gets the value of the i'th bit of n</span>
+  <span class="hljs-comment">// where they are labeled right to left, starting from 0.</span>
+  <span class="hljs-comment">//  The "units" are at 0, (so even or odd numbers alter this entry)</span>
+  <span class="hljs-comment">//  The "twos" at 1, etc.</span>
+    <span class="hljs-keyword">return</span> (n &gt;&gt; i) &amp; <span class="hljs-number">1</span>; 
+}
+</code></pre>
+
+<p class="bodytext">
+In the code above, the <code>&gt;&gt;</code> means bitwise <a href="https://en.wikipedia.org/wiki/Logical_shift">right shift</a>.<br>
+And the <code>&amp;</code> performs the bitwise logical <i>and</i> operation.<br>
+<a href="https://en.wikipedia.org/wiki/Bitwise_operations_in_C">This page details bitwise operations in C and C++</a>.
+</p>
+
+<p class="bodytext">
+Improve your <code>raiseExpPow</code> to use these bitwise operations so
+as to avoid the divisions by 2.
+</p>
+
+
+<h3>Puzzling*</h3>
+
+<p class="bodytext">
+If you've finished the lab early, here's something to tickle the gray matter:
+</p>
+<blockquote>
+“Four people need to cross a rickety footbridge;
+they all begin on the same side. It is dark, and they have one
+flashlight. A maximum of two people can cross the bridge at one time.
+Any party that crosses, either one or two people, must have the flashlight with
+them. The flashlight must be walked back and forth; it cannot be thrown, for example.
+Person 1 takes 1 minute to cross the bridge, person 2 takes 2 minutes, person 3
+takes 5 minutes, and person 4 takes 10 minutes. A pair must walk together at the
+rate of the slower person's pace. For example, if person 1 and person 4 walk together,
+it will take them 10 minutes to get to the other side. If person 4 returns the
+flashlight, a total of 20 minutes have passed. Can they cross the bridge in 17 minutes?”<br>
+<div style="text-align: right;">—&nbsp;Levitin &amp; Levitin [2011].</div>
+</blockquote>
+
+
+<p class="bodytext">
+<span style="font-size: 90%">
+* This is material outside the scope for lab quizzes.
+</span>
+</p>
+
+
+
+<hr>
+
+<h3>Acknowledgements</h3>
+<p class="bodytext" style="font-size:90%">
+The exercises based on digits of integers are based on questions on <a href="http://www.spoj.com/">SPOJ</a>.
+The copy of Christian Goldbach's letter is in the <a href="https://commons.wikimedia.org/w/index.php?curid=1721422">public domain</a>.
+The bridge-crossing puzzle is from Anany Levitin and Maria Levitin, "Algorithmic Puzzles", Oxford University Press, 2011.
+</p>
+
+
+
+
+
+<!-- ===================== END YOUR CONTENT HERE ===================== -->
+
+          </div>		<!-- close id="pageContent -->
+          <!--
+          <div style="height: 60px; padding-bottom: 10px;">
+            <img src="images/myLogo.gif" width="60" height="60"
+              alt="My Logo" style="float: right; margin-right: 20px;" />
+            </div>
+            <div class="clear"></div>
+            -->
+        </div>			<!-- close id="content"> -->
+      <div id="footer">
+        <div id="requiredLinks">
+          •
+          <a href="http://www.tamu.edu/" title="Texas A&amp;M University">Texas A&amp;M University</a>
+          •
+        </div>		<!-- close id="requiredLinks" -->
+      </div>		<!-- close id="footer" -->
+  </div>		<!-- close id="page" -->
+
+
+
+</div>
+</body></html>

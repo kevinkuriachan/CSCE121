@@ -1,0 +1,398 @@
+
+<!-- saved from url=(0053)http://robotics.cs.tamu.edu/dshell/cs121/l10/l10.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+
+  
+
+  <meta name="title" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <meta name="DC.Title" content="">
+  <meta name="DC.Author" content="">
+  <meta name="DC.Subject.Keyword" content="">
+  <meta name="DC.Description" content="">
+
+  <link rel="shortcut icon" href="http://robotics.cs.tamu.edu/dshell/cs121/images/favicon.ico">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab10_files/basic.css"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab10_files/siteName.css"> 
+  <link rel="stylesheet" type="text/css" media="print" href="./lab10_files/print.css"> 
+
+  <link rel="stylesheet" href="./lab10_files/atom-one-light.css"> 
+  <script src="./lab10_files/highlight.pack.js.download"></script><style></style>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+
+  pre.tight {
+    margin-top: -1.1em;
+    margin-bottom: -1.1em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  code {
+    font-size: 120%; 
+  }
+
+.hinthidden {
+    visibility: hidden;
+    background: #eee;
+    border: 1px dotted #aaa;
+    padding: 0px;
+    }
+.hinthidden:hover {
+    visibility: visible;
+}
+
+.hintvisible {
+    background-color: #eeeeee; 
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding-left: 6px; 
+    padding-right: 6px; 
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+    font-size: 60%;
+    visibility: visible;
+}
+
+.hinttext {
+    color: #999;
+    font-size: 75%; 
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div id="page">
+  <div id="header">
+    <div id="headerLogo">
+      <a href="http://www.tamu.edu/" title="Texas A&amp;M University Home"><img src="./lab10_files/primaryMark.gif" alt="Texas A&amp;M University primary mark" height="42" width="171"></a>
+    </div>
+
+    <a href="http://robotics.cs.tamu.edu/dshell/cs121/l10/l10.html#skipNav"><img src="./lab10_files/spacer.gif" alt="" style="float: left;" height="1" width="1"></a>
+
+    <div id="topTitle">
+      <h1>Department of Computer Science and Engineering</h1>
+    </div>
+
+  <div id="imageRotation">
+          <a href="http://robotics.cs.tamu.edu/" title="Home Link"><img src="./lab10_files/insideSample3.jpg" style="display: block;" alt="Sample Image" height="40" width="750"></a>
+  </div>
+
+  <div id="content">
+
+  <div id="pageContent">
+    <a name="skipNav"></a>
+
+
+<!-- ==================== BEGIN YOUR CONTENT HERE ==================== -->
+
+<h1 class="pageTitle">CSCE 121: Introduction to Program Design and Concepts</h1>
+
+<h1>Lab Exercise Ten</h1>
+<br>
+
+<h2>Objective</h2>
+<p class="bodytext">
+The purpose of this lab is to explore the use of <code>new</code> and <code>delete</code> for dynamic
+memory allocation and management. In particular, you're going to use these, along with pointers, to 
+make a singly-linked list queue.</p>
+
+<h3>Some advice</h3>
+<p class="bodytext">
+The first parts of the lab exercise, specifically those tasks under the heading "Getting the Basics Working", are
+extremely straightforward. It'll require some time just to put all the pieces together,
+but there's nothing that is conceptually difficult. It is, therefore, recommended that you
+have this much completed before attending your lab. Doing so will permit you to use the lab
+time effectively, as you can get help in setting up pointers,
+maintaining, and traversing the queue. This will likely require debugging, which is where you
+can really benefit from the eyeballs of others. If you really get stuck
+tracking down a bug, consider posting your code on piazza! Remember that the
+labs are designed so that you can get help from others.
+</p>
+<hr>
+
+
+<h2>Tracking pizza orders</h2>
+
+<h3>System Requirements</h3>
+
+<p class="bodytext">
+As part of your gig as a consulting programmer, you've been approached by a local pizza restaurant.
+They'd like help setting up a computer system to manage their ordering process.
+You meet to talk with the owner, engaging her in a detailed discussion. Through this you conduct a <i>requirements analysis</i>, a software engineering term, meaning that you establish
+the restaurant's needs and determine the functional properties they desire from the new software. 
+(It also allows you to estimate your time and to provide them with an estimate of the cost.)
+</p>
+
+<p class="bodytext">
+After the discussion, you've established the following:
+</p>
+<ul style="list-style-type: square;">
+<li style="margin-top:14px;">As they're starting small, they have only one
+computer. But they still need some software to make sure they don't lose track of
+orders as they are placed and prepared. 
+A few of the employees are quite absent-minded and experience has shown that customers
+don't appreciate being forgotten and, as the expression goes,
+their orders falling through the cracks.  </li>
+
+<li style="margin-top:14px;">They'd like the system to present a simple menu with three options: <i>Enter
+order</i>, <i>Prepare order</i>, <i>Quit</i>.</li>
+
+
+<li style="margin-top:10px;">When you enter an order, you need 
+ capture all the details for the order. 
+
+<ul>
+<li style="margin-top:14px;">Pizzas come in a small set of varieties: they can be small, medium, or large; 
+their crust can be either skinny or thick; 
+and it is easy to enumerate the flavors they offer: Margarita, Pepperoni, Hawaiian, Vegetarian;
+finally, there is also an extra cheese option. </li>
+<li style="margin-top:10px;">Also mark whether the payment was via cash or debit card.</li>
+</ul>
+
+</li><li style="margin-top:14px;">The kitchen uses the prepare order menu option. They want it to pull up the order that
+has been in the system the longest (i.e., the earliest placed order still resident in the system) and to display the details of that pizza. 
+The system then prompts them with: "Completed? [Y/N]" In either case, they are returned to the main menu. If they entered yes, the order is removed. 
+If not, the next time they take the prepare order menu option, the same pizza will be shown (it is still the earliest placed order, after all).</li>
+</ul>
+
+<h3>Getting the Basics Working</h3>
+
+<p class="bodytext">
+You ponder this for a little bit. And make the following design choices for your program.
+You don't know beforehand how much throughput they'll have, so you opt to use pointers along with
+dynamic memory allocation to store the data. </p>
+
+<ul>
+<li style="margin-top:14px;">You decide to use a <code>struct</code> to represent the details of the pizza. <b>Step 1</b>: define the type with the basic pizza entries now, postponing treatment of the queuing aspects.
+</li>
+<pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">pizza_t</span> {</span>
+  ... <span class="hljs-comment">// define the data fields appropriately</span>
+};</code></pre>
+
+
+<li style="margin-top:14px;">Each time you enter a new order, you'll allocate a new instance of this type and populate
+the fields from the user-provided input. As time is of the
+essence, especially when ordering, you opt to use single characters to make it easy to enter input. 
+<a href="http://robotics.cs.tamu.edu/dshell/cs121/l10/prompt.cpp">Here</a> is some code for a handy little function that can make your life easier. <b>Step 2</b>: write a function that allocates a new pizza, and
+gets input from the user, setting the data fields appropriately. It should return a pointer to the newly created <code>pizza_t</code>.
+<pre><code class="hljs cpp"><span class="hljs-keyword">pizza_t</span>* create_new_pizza_order()
+{
+  ... <span class="hljs-comment">// allocates a new pizza_t</span>
+  ... <span class="hljs-comment">// and prompts the user, assigning the data fields appropriately</span>
+}
+</code></pre>
+
+
+</li><li style="margin-top:14px;">You'll need to display the pizza details for the kitchen, so now is a good time to write something
+that will print the output. <b>Step 3</b>: write a function that, given a pointer to some pizza, will
+display its fields appropriately.
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">output_pizza_data</span><span class="hljs-params">(<span class="hljs-keyword">pizza_t</span> *p)</span>
+</span>{
+  ... <span class="hljs-comment">// display the pizza_t nicely</span>
+}
+</code></pre>
+</li></ul>
+
+
+<h3>Designing the Queue</h3>
+
+<p class="bodytext">
+The orders are processed in strict sequence, one after another, as if flowing in a pipeline. The primary challenge is that at certain times, e.g., when business peaks around lunchtime, there
+will be more elements in the pipeline than at other times.  We can achieve the appropriate functionality with a data structure called a queue, which we'll
+implement via a linked list.
+Sometimes a queue is called a <i>FIFO</i> (first in, first out) structure,
+a rather descriptive name. (In the lectures we've seen stacks —including the call stack— can you guess the analogous name for a stack?)</p>
+
+<p class="bodytext">
+Your main task is to implement a queue. The
+following will guide you through the steps to do this, but you may find it
+helpful to read all the steps before beginning:
+</p>
+
+<ul>
+<li style="margin-top:14px;">
+<a href="./lab10_files/struct.svg"><img width="120" align="right" style="margin-left:8px;margin-top:0px;" src="./lab10_files/struct.svg"></a>
+The basic idea is that, as they come in, we'll chain pizza orders together, one after the other. 
+Each element need only have a reference to the subsequent element, i.e., the pizza that came in directly after it.<br>
+We can do this easily by adding a pointer to our <code>pizza_a</code> structure. The figure on the right shows 
+this as a little box containing a dot,  which appears in addition to the data describing the particular deliciousness.
+<b>Step 1</b>: modify the definition of your <code>struct</code> accordingly.
+</li>
+
+<li style="margin-top:14px;">
+We keep track of the data by having two references to each end of the queue.
+The back of the queue is the end of the chain that is the last order that was placed. (When you walk up to an ATM, you can immediately tell who was the last person to arrive,
+and this is the all the information that you need in order to know where to stand.)
+I denote this with <code>q_back</code> in my code and in the figures below.
+The front of the queue, with a pointer <code>q_front</code>, also refers to an end of the chain and it is the oldest order in this case.
+Of course, if there is only one order, these two pointers may refer to the same thing, as in the following example:<br>
+<a href="./lab10_files/q1.svg"><img align="center" style="height:140px; margin-left:180px;margin-top:4px;margin-bottom:15px;" src="./lab10_files/q1.svg"></a><br>
+Note that because there is nothing after the large margarita, its pointer to the next element in the queue (which we'll denote with <code>next</code>) doesn't
+refer to any pizza.
+</li>
+
+<li style="margin-top:14px;">
+Suppose that a new order is placed for a medium vegetarian pizza. This order goes to the back of the queue. Which means that:
+(1) the newly-order pizza's <code>next</code> pointer doesn't point to anything;
+(2) the large margarita (i.e., the erstwhile <code>q_back</code> pizza)  updates its <code>next</code> pointer; 
+and (3) the <code>q_back</code> destination must be updated to refer to the vegetarian option.<br>
+<a href="./lab10_files/q2.svg"><img align="center" style="height:140px; margin-left:180px;margin-top:4px;margin-bottom:15px;" src="./lab10_files/q2.svg"></a><br>
+This operation follows a well-defined pattern and the pattern doesn't depend on the fact that there was only one element already in the queue—the process would be
+identical if there were 1 million preexisting elements in the queue. Follow the logic for the small pepperoni order that was just placed:<br>
+<a href="./lab10_files/q3.svg"><img align="center" style="height:140px; margin-left:180px;margin-top:4px;margin-bottom:15px;" src="./lab10_files/q3.svg"></a><br>
+<b>Step 2</b>: define the variables that track the queue ends and write a function to add orders to the back of the queue.
+You'll have to initialize your <code>q_front</code> and <code>q_back</code> pointers to something.
+</li>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+Have you thought about what an empty queue should look like? 
+<a href="http://robotics.cs.tamu.edu/dshell/cs121/l10/q0.svg">Here's the answer.</a>
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+<li style="margin-top:14px;">
+At this point, the customers take their seats. So the pizza parlor employee dons their apron and returns to the brick oven. Using the software's menu
+system they call up the pizza that they need to start tossing the dough for. They get the large margarita, of course. Once they mark that as completed, the
+queue has state depicted by this diagram:<br>
+<a href="./lab10_files/q4.svg"><img align="center" style="height:140px; margin-left:180px;margin-top:10px;margin-bottom:15px;" src="./lab10_files/q4.svg"></a><br>
+<b>Step 3</b>: add code to display the pizza referred to via <code>q_front</code> and then to remove it from the queue. Once it has been removed,
+make sure you free the memory that was allocated to it. 
+</li></ul>
+
+<p class="bodytext">
+It can be challenging to make sure your code is correct. Here are some things to try in order to test your implementation:
+</p>
+<ol>
+<li style="margin-top:9px;">Ensure that attempting to remove an item from an empty queue doesn't result in a crash.</li>
+<li style="margin-top:9px;">Make sure that all the allocated items in the queue are deleted and your program returns the memory to the system, after you use the <i>Quit</i> option from the menu.</li>
+<li style="margin-top:9px;">Check that once you add 
+<span style="font-family: STIXGeneral; color: black;">k</span>
+items and then remove 
+<span style="font-family: STIXGeneral; color: black;">k</span>
+items:
+(i) you get the same items back, 
+(ii) you get them back in the right order, 
+and (iii) the queue is in the appropriate (empty) state at the end, 
+and, further, that (iv) from this empty state the queue can correctly receive (<i>enqueue</i> is the right verb here) more items again.</li>
+<li style="margin-top:9px;">Some tools can be very helpful in tracking memory leaks. Try the following for your program:
+<pre><code class="hljs">valgrind --leak-check=full --show-leak-kinds=all ./my_lab10_pizza_parlor_is_amazeballs_yo</code></pre>
+</li></ol>
+
+
+<h3>Phone Orders</h3>
+
+<p class="bodytext">
+It seems that your software has been a hit. After the first week, you stopped receiving telephone calls  from 
+pizza chefs at all hours of the night. Those first few days, they'd call you
+angrily to report that the program had crashed, exiting and printing some
+mysterious message about a SEGFAULT. But you've ironed out those wrinkles, and more and more pizza is being sold.
+So you've now got a contract to add a new feature to the system.
+</p>
+
+<p class="bodytext">
+They'd like to be able to mark that certain orders are being placed by phone for delivery.
+<b>Step 1</b>: accommodate this request by adding a boolean variable to keep track of this for each order.
+You'll need to update your functions for inputting and displaying orders.
+</p>
+
+<p class="bodytext">
+They'd like to be able to see a report showing the phone orders
+still being processed (i.e., currently in the queue). <b>Step 2</b>: write a function that will produce this
+report. To do this, you need to sweep from one end of the queue to
+the other, outputting only those orders that were placed by telephone.
+</p>
+
+<p class="bodytext">
+The following feature is particularly lucrative, as it will allow you to bill
+more for the product (i.e., will take a bit more time, but should be
+interesting to write). Once phone order items are completed they're removed from the queue, the same as all the others.
+But now, instead, place them in another queue, the queue of items awaiting delivery.
+<b>Step 3</b>: With only minor adjustments, you should be able to realize this feature as well. You'll also need to 
+add a menu option for delivery drivers to remove items as they pick them up.
+</p>
+
+
+
+
+
+<!-- ===================== END YOUR CONTENT HERE ===================== -->
+
+          </div>		<!-- close id="pageContent -->
+          <!--
+          <div style="height: 60px; padding-bottom: 10px;">
+            <img src="images/myLogo.gif" width="60" height="60"
+              alt="My Logo" style="float: right; margin-right: 20px;" />
+            </div>
+            <div class="clear"></div>
+            -->
+        </div>			<!-- close id="content"> -->
+      <div id="footer">
+        <div id="requiredLinks">
+          •
+          <a href="http://www.tamu.edu/" title="Texas A&amp;M University">Texas A&amp;M University</a>
+          •
+        </div>		<!-- close id="requiredLinks" -->
+      </div>		<!-- close id="footer" -->
+  </div>		<!-- close id="page" -->
+
+
+
+</div>
+</body></html>

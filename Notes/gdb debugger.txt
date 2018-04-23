@@ -1,0 +1,7 @@
+to use, add -g flag after g++ 
+
+gbd debugger commands:
+
+run
+bt - backtrace, tells you what functions you're in 
+quit 

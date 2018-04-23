@@ -1,0 +1,736 @@
+
+<!-- saved from url=(0051)http://robotics.cs.tamu.edu/dshell/cs121/l4/l4.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+
+  
+
+  <meta name="title" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <meta name="DC.Title" content="">
+  <meta name="DC.Author" content="">
+  <meta name="DC.Subject.Keyword" content="">
+  <meta name="DC.Description" content="">
+
+  <link rel="shortcut icon" href="http://robotics.cs.tamu.edu/dshell/cs121/images/favicon.ico">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab4_files/basic.css"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab4_files/siteName.css"> 
+  <link rel="stylesheet" type="text/css" media="print" href="./lab4_files/print.css"> 
+
+  <link rel="stylesheet" href="./lab4_files/atom-one-light.css"> 
+  <script src="./lab4_files/highlight.pack.js.download"></script><style></style>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+
+  pre.tight {
+    margin-top: -1.1em;
+    margin-bottom: -1.1em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  code {
+    font-size: 120%; 
+  }
+
+.hinthidden {
+    visibility: hidden;
+    background: #eee;
+    border: 1px dotted #aaa;
+    padding: 0px;
+    }
+.hinthidden:hover {
+    visibility: visible;
+}
+
+.hintvisible {
+    background-color: #eeeeee; 
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding-left: 6px; 
+    padding-right: 6px; 
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+    font-size: 60%;
+    visibility: visible;
+}
+
+.hinttext {
+    color: #999;
+    font-size: 75%; 
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div id="page">
+  <div id="header">
+    <div id="headerLogo">
+      <a href="http://www.tamu.edu/" title="Texas A&amp;M University Home"><img src="./lab4_files/primaryMark.gif" alt="Texas A&amp;M University primary mark" height="42" width="171"></a>
+    </div>
+
+    <a href="http://robotics.cs.tamu.edu/dshell/cs121/l4/l4.html#skipNav"><img src="./lab4_files/spacer.gif" alt="" style="float: left;" height="1" width="1"></a>
+
+    <div id="topTitle">
+      <h1>Department of Computer Science and Engineering</h1>
+    </div>
+
+  <div id="imageRotation">
+          <a href="http://robotics.cs.tamu.edu/" title="Home Link"><img src="./lab4_files/insideSample3.jpg" style="display: block;" alt="Sample Image" height="40" width="750"></a>
+  </div>
+
+  <div id="content">
+
+  <div id="pageContent">
+    <a name="skipNav"></a>
+
+
+<!-- ==================== BEGIN YOUR CONTENT HERE ==================== -->
+
+<h1 class="pageTitle">CSCE 121: Introduction to Program Design and Concepts</h1>
+
+<h1>Lab Exercise Four</h1>
+<br>
+
+<h2>Objective</h2>
+<p class="bodytext">
+This lab will give you additional practice with arrays and a great deal with
+strings. You'll see that this lab, like the prior one, asks you to think about
+useful test cases to help ensure that your code is working correctly. Try
+to cultivate this skill!
+</p>
+
+<h3>How far must I get?</h3>
+<p class="bodytext">
+This lab is assigned for the entire week.  Look over
+the questions and make an attempt at some of the questions before arriving at
+your lab session.  This way you can optimize your lab time and get help with
+the questions that are most tricky for you.
+You're expected to complete the questions that you're not able to finish in
+the lab on your own. 
+</p>
+
+<hr>
+
+<h2>Strings as <code>char</code> arrays</h2>
+<p class="bodytext">
+These exercises in this section build up incrementally, so it's best to make sure
+you are quite confident with your answer to a question before moving onto the
+next.  If you get stuck (or frustrated, or bored with strings) then you can skip to the questions 
+on Shuffling or Pig Latin, below, and then return to this question anew.
+</p>
+
+<p class="bodytext">
+It will probably be helpful to reuse parts of your previous solutions. 
+Think about this as a
+way of planning your approach, organizing your code, and testing the validity
+of your prior answers.  <i> Don't be deceived by the simplicity of the
+operation
+being asked for</i>—behind their seemingly trivial requirements lurk
+many fiddly conditions. Producing code which works correctly for all of these
+conditions is a challenge, demanding thoroughness and clear logical thinking.
+If you run into difficulties, perhaps with
+functions producing unpredictable or unexpected behavior, the likely source is
+something which is failing to ensure that the resulting array of characters
+ends with a <code>'\0'</code> character.
+</p>
+
+<p class="bodytext">
+<i>Important:</i> Even if you know of a string library that can perform many of these operations,
+the point of these exercises is to write your own functions.
+We're using string processing as a way to practice working with arrays. 
+You should only use <code>char[]</code>'s for these questions, absolutely no
+fancy C++ classes for strings, or regular expressions, or any other
+chicanery not covered in the lectures.</p>
+
+<h3>Appending a character</h3>
+<p class="bodytext">
+Write a function that takes a string and modifies it by appending a capital X to its end.
+</p>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">appendX_unsafe</span><span class="hljs-params">(<span class="hljs-keyword">char</span> str[])</span>
+</span>{ <span class="hljs-comment">// modifies the input, appending an X to it.</span>
+    ...
+}
+</code></pre>
+
+<p class="bodytext">
+To test your function you may find the following <code>main</code> function useful.
+It uses <code>cin</code> in a different way—this new way is helpful
+because it allows you to prompt the user for strings that include spaces.
+</p>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">char</span> mystr[<span class="hljs-number">100</span>];
+    <span class="hljs-built_in">cout</span> &gt;&gt; <span class="hljs-string">"Please enter a string: "</span>;
+    <span class="hljs-built_in">cin</span>.getline(mystr, <span class="hljs-number">100</span>);
+
+    appendX_unsafe(mystr);
+    
+    <span class="hljs-built_in">cout</span> &gt;&gt; <span class="hljs-string">"mystr = '"</span> &gt;&gt; mystr &gt;&gt; <span class="hljs-string">"'\n"</span>;
+    
+    <span class="hljs-keyword">char</span> s[<span class="hljs-number">100</span>] = <span class="hljs-string">"lab three"</span>;
+    appendX_unsafe(s);
+    <span class="hljs-built_in">cout</span> &gt;&gt; <span class="hljs-string">"s = '"</span> &gt;&gt; s &gt;&gt; <span class="hljs-string">"'\n"</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+
+
+
+<p class="bodytext">
+The previous function was unsafe because if <code>str</code> was an array of
+size <code>7</code> and contained the string "<code>danger</code>", then
+the string "<code>dangerX</code>" would have overrun. Do you see why?
+</p>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+            Here "danger" = ['d', 'a', 'n', 'g', 'e', 'r', '\0'], but
+            "dangerX" = ['d', 'a', 'n', 'g', 'e', 'r', 'X', '\0'], which requires
+            the memory for 8 characters.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+<p class="bodytext">
+Now, extend your previous function by also passing in the number of characters
+in the array, and checking that you don't write beyond where you should.
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">appendX</span><span class="hljs-params">(<span class="hljs-keyword">char</span> str[], <span class="hljs-keyword">int</span> len)</span>
+</span>{ <span class="hljs-comment">// modifies the input, only appending an X if it would still be within bounds</span>
+    ...
+}
+</code></pre>
+
+<p class="bodytext">
+Test your code by trying</p>
+<pre class="tight"><code class="hljs cpp"><span class="hljs-keyword">char</span> t[<span class="hljs-number">7</span>] = <span class="hljs-string">"danger"</span>;
+ appendX(t,<span class="hljs-number">7</span>);	
+</code></pre>
+
+<p class="bodytext">
+and comparing it with</p>
+<pre class="tight"><code class="hljs cpp"><span class="hljs-keyword">char</span> t[<span class="hljs-number">8</span>] = <span class="hljs-string">"danger"</span>;
+appendX(t,<span class="hljs-number">8</span>);	
+</code></pre>
+<br>
+
+<p class="bodytext">
+It is usually worth your while to construct test inputs for your code during
+the process of writing it. Try to get into the habit of doing this.
+</p>
+
+
+
+<h3>Concatenating two strings</h3>
+
+<p class="bodytext">
+The next step is to write a function that appends one string to the end of
+another. If the combined length is longer than can be safely
+stored, append as many characters as can be safely stored, but
+don't forget to always ensure you include a terminating <code>'\0'</code>.
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">catstrings</span><span class="hljs-params">(<span class="hljs-keyword">char</span> first[], <span class="hljs-keyword">int</span> fst_len, <span class="hljs-keyword">char</span> second[])</span>
+</span>{ <span class="hljs-comment">// concatenate second to the end of first, while not overrunning first</span>
+    ...
+}
+</code></pre>
+
+<p class="bodytext">
+One smart way to test your code is to make an array which is actually longer
+than <code>fst_len</code>. If you fill that array with some unusual character, say a <code>'~'</code>,
+you can check whether any part beyond <code>first[fst_len-1]</code> has been
+overwritten by ensuring that the remainder of the entries are still filled with 
+<code>'~'</code>s.
+To do so, you'll need to
+write your own function to print out all elements of the array, since <code>cout</code> always stops at the first <code>'\0'</code>.
+This can help give you confidence that your code is respecting the 
+<code>fst_len</code> limit for operations that change (or write) memory, but
+it won't ensure that you don't try to read memory that you shouldn't.
+Careful reasoning is the best way to deal with the latter issue.
+</p>
+
+<p class="bodytext">
+Writing the code for the previous question that is correct for all instances
+requires extreme care.  Even though your program may seem to run without any
+problems, that only provides limited evidence for correctness. Ask one of your
+peers to try find an input that causes your code to act incorrectly. Then do
+the same for them. If you can't find anyone to do it in person, post your
+code to piazza.
+</p>
+
+<h3>String comparison</h3>
+
+<p class="bodytext">
+Write a function that compares two strings, returning true if and only
+if they are identical.
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">string_eq</span><span class="hljs-params">(<span class="hljs-keyword">char</span> first[], <span class="hljs-keyword">char</span> second[])</span>
+</span>{ <span class="hljs-comment">// return true iff two strings are identical, character for character </span>
+    ...
+}
+</code></pre>
+
+<p class="bodytext">
+You may think that just using the line <code>first == second</code>
+would do the job. <i>Try it!</i>
+</p>
+
+<p class="bodytext">
+It'll compile. If your testing is only cursory, it might even trick you into
+believing that it's working correctly. Here's an example: for some previously
+defined variable
+<code>str</code>, if you call <code>string_eq(str, str)</code> as a test,
+you'll get <code>true</code>.  And <code>string_eq("hot", "dog")</code> will
+return <code>false</code>, also just as you'd expect.
+But, in fact, strings (and arrays in general) won't work correctly this way because
+they are aggregate data types.
+</p>
+
+<p class="bodytext">
+Once you get your <code>string_eq</code> working correctly, write 
+a new function <code>string_eq_nocase</code> which compares
+two strings but ignores
+differences in the case of letters (so that <code>"bungle"</code> and
+<code>"BUNgle"</code> are identical). 
+</p>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+<a href="http://robotics.cs.tamu.edu/dshell/cs121/code/501_fourc.cpp" <="" a="">Here</a>
+is code that includes a function <code>lower_to_upper</code> that returns
+the uppercase twin of any lowercase letter.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">string_eq_nocase</span><span class="hljs-params">(<span class="hljs-keyword">char</span> first[], <span class="hljs-keyword">char</span> second[])</span>
+</span>{ <span class="hljs-comment">// a case insensitive check for string equality</span>
+    ...
+}
+</code></pre>
+
+<h3>Stripping multiple spaces</h3>
+
+<p class="bodytext">
+Some typesetting conventions, especially those from the middle of the last
+century (which were influenced by the fixed width characters of typewriters), 
+involved sometimes putting two succeeding spaces after certain punctuation symbols. 
+</p>
+
+<p class="bodytext">
+Write a function that takes a string (as an array of characters) as input and
+modifies it so that, wherever it has multiple consecutive spaces, these
+become a single space. For example
+<code>"Some<span style="color:#aaaaaa;">␣</span>*crazy*<span style="color:#aaaaaa;">␣␣␣␣</span>s<span style="color:#aaaaaa;">␣␣</span>p<span style="color:#aaaaaa;">␣␣␣␣</span>a<span style="color:#aaaaaa;">␣</span>c<span style="color:#aaaaaa;">␣␣␣</span>i<span style="color:#aaaaaa;">␣␣</span>n<span style="color:#aaaaaa;">␣</span>g<span style="color:#aaaaaa;">␣␣</span>!!"</code> becomes 
+<code>"Some<span style="color:#aaaaaa;">␣</span>*crazy*<span style="color:#aaaaaa;">␣</span>s<span style="color:#aaaaaa;">␣</span>p<span style="color:#aaaaaa;">␣</span>a<span style="color:#aaaaaa;">␣</span>c<span style="color:#aaaaaa;">␣</span>i<span style="color:#aaaaaa;">␣</span>n<span style="color:#aaaaaa;">␣</span>g<span style="color:#aaaaaa;">␣</span>!!"</code>,
+where here I've used <code><span style="color:#aaaaaa;">␣</span></code> to denote the space character <code>' '</code>.
+
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">strip_dup_spaces</span><span class="hljs-params">(<span class="hljs-keyword">char</span> str[])</span>
+</span>{ <span class="hljs-comment">// removes all consecutive spaces from str</span>
+    ...
+}
+</code></pre>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+        Some good test cases might start with multiple spaces, have some words in the middle, but also end with multiple spaces.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+<h3>Substring search</h3>
+
+
+<p class="bodytext">
+Write a function that looks for one string as a substring within another.
+Here we consider <code>"engine"</code> as a substring of the following string (a pithy quotation
+of Rick Cook):
+</p><blockquote><code>"Programming today is a race between software engineers striving to
+build bigger and better idiot-proof programs, and the Universe trying to
+produce bigger and better idiots. So far, the Universe is winning."</code>
+</blockquote> 
+For this question, we want the substring to appear in sequence and without requiring deletions so,
+although <code>"engines"</code>  can be found within the quotation (via <code>"<u>engine</u><span style="color:#9e9e9e">er</span><u>s</u>"</code>, we see that it is a
+subsequence), we don't consider it a substring.
+<p></p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">contains_sub_str</span><span class="hljs-params">(<span class="hljs-keyword">char</span> haystack[], <span class="hljs-keyword">char</span> needle[])</span>
+</span>{ <span class="hljs-comment">// return true iff needle appears within haystack</span>
+    ...
+}
+</code></pre>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+Be careful about overrunning the end of either string. Also don't forget test cases that have a <code>needle</code> that is longer than the <code>haystack</code>.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+<p class="bodytext">
+Writing an efficient <code>contains_sub_str</code> function is
+surprisingly difficult. Of course, we mainly care about correctness, so our
+task is comparatively easy.
+(If you're curious, <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">this</a> and
+<a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string_search_algorithm">also this</a> Wikipedia page will
+give you an entry into the world of string-matching algorithms; if this spurs your interest, talk with me about it.)
+</p>
+
+<h3>Substring deletion</h3>
+
+<p class="bodytext">
+Now combine the experience gained in writing <code>strip_dup_spaces</code>
+and <code>contains_sub_str</code> functions,
+to write a function that deletes the first occurrence of a substring,
+if that substring appears in the input.
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">del_first_occur</span><span class="hljs-params">(<span class="hljs-keyword">char</span> input[], <span class="hljs-keyword">char</span> cut[])</span>
+</span>{ <span class="hljs-comment">// if cut appears in input, remove it and return true; </span>
+  <span class="hljs-comment">// otherwise leave input as is and return false</span>
+    ...
+}
+</code></pre>
+
+<h2>Shuffling a Deck of Cards</h2>
+<p class="bodytext">
+Your previous effort in helping the local casino with their craps table was a
+big success. It was so helpful that you're now their preferred consultant,
+their go-to numerical ninja. This time it is to investigate some suspicious
+payouts at the Texas Hold ’Em table.  The management suspect a crooked
+croupier, <a href="https://en.wikipedia.org/wiki/Croupier_(film)">Clive</a>,
+who is deft at manipulating cards. They suspect that, cunningly, he is dealing
+crooked hands because he is able to control the deck. Your job is to get to the bottom of this
+conundrum.</p>
+
+<p class="bodytext">
+You don your finest evening gown/black tie and head to the table to
+play a few hands.  With a tiny camera concealed slyly about your person, you're
+able to record Clive's shuffle technique close-up. After casually placing a few
+bets, you swizzle a few expensive drinks (on the house, of course), then return to your
+lab. </p>
+
+<p class="bodytext">
+As you pick over the details of the video with forensic care, you observe that
+Clive's technique in shuffling the cards is definitely suspicious.
+After pondering for a while, it hits you: his shuffles are just too perfect. He cuts
+the standard deck of 52 cards precisely in half every time. Holding the 
+top half in his right hand, bottom half in his left,
+he then shuffles them so that they
+interleave exactly: the cards come down singly, first one from the left hand, then one from the
+right hand, one from the left, right, left, … flawlessly. He does it
+every time, perfectly, with the repeatability of a machine. 
+</p>
+
+<p class="bodytext">
+Then you notice something else. The casino requires at least 5 shuffles per deal.
+Clive exceeds this by a substantial margin: he shuffles 8 times per deal. It is always 8 times, not 7 on some occasions and 9 on others, but
+8, always and exactly 8. Again and again, 8, religiously. 
+</p>
+
+<p class="bodytext">
+To get to the bottom of the matter,
+write some code to examine how a sequence of 8 perfect shuffles, as described above, permutes
+the cards in the deck.
+</p>
+
+
+<h2>Pig Latin Printer</h2>
+<p class="bodytext">
+Write a function that is given a string (as a 
+<code>'\0'</code> terminated char array) and prints it out to the console (via <code>cout</code>)
+in Pig Latin form.  You should handle a whole string, translating it word by word. A single word is
+converted to Pig Latin via following algorithm:
+</p><ol>
+<li>If the string begins with a vowel, simply append <i>"way"</i> to the end of the string. 
+As an example, the Pig Latin for <i>"elephant"</i> is <i>"elephantway"</i>.</li>
+<br>
+<li>Otherwise, locate the first vowel, move all the characters before the vowel
+to the end of the word, and add <i>"ay"</i>. For example, Pig Latin for
+<i>"tradition"</i> is <i>"aditiontray"</i> as the two characters <i>"tr"</i>
+appear before the first vowel.</li>
+</ol>
+<p></p>
+
+<p class="bodytext">
+(For this question, use the five standard vowels: <i>a</i>,
+<i>e</i>, <i>i</i>, <i>o</i>, and <i>u</i>.)
+</p>
+
+<p class="bodytext">
+Note that you're not asked to produce a new string, only to output to <code>cout</code>. That makes
+it easier because you don't have to make space for the <i>"way"</i> or <i>"ay"</i>.
+You will likely find it is useful to write and test several separate functions
+to achieve the final result.
+</p>
+
+<p class="bodytext">
+Try to write all the code without needing to copy characters from the input
+array into another array. In computing, the phrase <a href="https://en.wikipedia.org/wiki/Zero-copy">zero-copy</a> is sometimes used
+to refer to information processing operations which avoid having the CPU copy
+data; it is typically used to improve efficiency. In this question, as we don't
+know how long the string provided as input will be, we wish to avoid making
+copies to ensure <i>safety</i>. (Later in the class, we'll be able to
+allocate variables of sizes that are determined dynamically, so you'd be
+able to make an array of the right size—but a solution without
+needing to allocate new variables is still superior.)</p>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+Good test cases to try are: the empty string, a string with only a single character (either a vowel, or not), and long strings of vowels.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+
+<h2>Numerical Expression Cost*</h2>
+<h3>Converting to an arbitrary radix</h3>
+<p class="bodytext">
+A couple of exercises back we looked at how to pull off digits in an integer in
+base 10 and also base 2. The latter was useful for various things, such as the
+repeated squaring technique for computing exponents efficiently. In this
+question you need to write a function to convert an integer input into
+an arbitrary radix or base. Represent the output as an array.
+This is the declaration for my function which does that:
+</p>
+
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">convert_to_base</span><span class="hljs-params">(<span class="hljs-keyword">long</span> in, <span class="hljs-keyword">int</span> out_digits[], <span class="hljs-keyword">int</span> out_base)</span>
+</span>{ <span class="hljs-comment">// The inputs: in is a positive integer</span>
+  <span class="hljs-comment">//             out_base is a also positive integer</span>
+  <span class="hljs-comment">// Output: the number in, but expressed digit-by-digit in out_digits</span>
+    ...
+}
+</code></pre>
+
+
+<p class="bodytext">
+You should decide whether you'll put the least significant digits (the units)
+at <code>out_digits[0]</code> or whether you'll put the most significant digit
+there.  I found it computationally convenient to put the least significant
+digits at lower indices of <code>out_digits</code>, but also wrote a function
+that prints it in the more usual form of most significant digit first.
+</p>
+
+<p class="bodytext">
+This section's title says "an arbitrary radix" but we're actually only
+considering positive integer radices. And, at least for my code, extra work
+was needed to handle base <a href="https://en.wikipedia.org/wiki/Unary_numeral_system">1</a>. Believe it or
+not, you can express numbers in terms of bases that are fractions (such as ⅜),
+real numbers (imagine base <span style="white-space: nowrap;
+font-size:smaller"> √<span style="text-decoration:overline;">2</span>
+</span>), and there's no reason why they can't be negative too! I don't know of
+any applications for these strange representations, but if you discover one be
+sure to tell me.  </p>
+
+<h3>Computers that use ternary</h3>
+<p class="bodytext">
+In the past, there have been several serious proposals to build computers
+which would use ternary, i.e., base 3, as the underlying representation for
+data. Rather than <i>bits</i> (binary digits) such computers have memory
+measured in <i>trits</i> (ternary digits). Nikolay P. Brusentsov and Sergei Sobolev,
+of Moscow State University, developed a computer called <a href="https://en.wikipedia.org/wiki/Setun">Setun</a> that operated successfully
+with the ternary representation. Between 1958–1965 about fifty such machines
+were produced and operated. On this side of the Atlantic, the original proposal for the MIT
+Whirlwind considered base 3 but never explored those ideas in their
+real implementation, and some decades later researchers at SUNY Buffalo designed the <span style="font-size:smaller">TERNAC</span> which used base 3.</p>
+
+<p class="bodytext">
+Binary has the advantage of being easy to implement reliably through electronics.
+So why consider using ternary, then? The answer is that base 3 is more
+efficient. But what exactly is the efficiency of a particular radix? The typical
+definition takes the width
+of a representation  multiplied by the radix.<br>
+If <span style="font-family: STIXGeneral; color: black;font-size:larger;">width</span> = number of columns of digits, and we have
+<span style="font-family: STIXGeneral; color: black; font-size:larger;">radix</span> = number of symbols, then<br> 
+<span style="padding-left:250px; font-family: STIXGeneral; color: black; font-size:larger;">cost<sub>radix</sub> = width × radix</span>.<br>
+By this measure, base 3 is the most efficient of all integer bases. 
+</p>
+
+<h3>Ternary doesn't always win</h3>
+
+<p class="bodytext">
+Despite base 3 being more efficient than base 2 for an infinite number of
+integers, there are some specific ones where binary wins out. For
+example, to represent 65,535 in binary, you need 16 bits,
+yielding a representational cost as <span style="font-family: STIXGeneral; color: black;">cost<sub>2</sub>(65535) = 16 × 2 = 32</span>.
+Whereas a ternary
+representation requires 11 trits, 
+and hence <span style="font-family: STIXGeneral; color: black;">cost<sub>3</sub>(65535) = 11 × 3 = 33</span>.
+So we see that 
+<span style="font-family: STIXGeneral; color: black;">cost<sub>3</sub>(65535)
+ &gt; cost<sub>2</sub>(65535)</span>.
+</p>
+
+<p class="bodytext">
+Use your <code>convert_to_base</code> function to count how many integers 
+are more efficiently represented in binary than ternary. 
+</p>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+        There are exactly 8,487 values for 
+<span style="font-family: STIXGeneral;">x</span> where
+<span style="font-family: STIXGeneral;">cost<sub>3</sub>(x) &gt; cost<sub>2</sub>(x)</span>.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+<p class="bodytext">
+It turns out that the question of the most efficient representation isn't
+just a two horse race. There's another positive integer base that beats
+binary and ternary for a small set of numbers.
+Use your <code>convert_to_base</code> function to find this third base
+which can beat out base 2 and base 3 in some particular cases.
+</p>
+
+
+<p class="bodytext">
+<span style="font-size: 90%">
+* This is material outside the scope for lab quizzes.
+</span>
+</p>
+
+
+
+<hr>
+
+<h3>Acknowledgements</h3>
+<p class="bodytext" style="font-size:90%">
+The Pig Latin question is adapted from Owen L. Astrachan's "A Computer Science Tapestry", McGraw Hill 1999.<br>
+I encountered the Faro Shuffle, the basis of the card shuffling question, after reading a paper on card shuffling by Persi Diaconis.<br>
+The discussion and question about ternary is based on an essay written 
+by Brian Hayes, which appeared in <i>American Scientist</i>; the essay
+appears as "Third base" in the collection "Group Theory in the Bedroom and Other Mathematical Diversions", Hill &amp; Wang, 2008. The essays are charming and insightful, well worth the read.
+</p>
+
+
+
+
+<!-- ===================== END YOUR CONTENT HERE ===================== -->
+
+          </div>		<!-- close id="pageContent -->
+          <!--
+          <div style="height: 60px; padding-bottom: 10px;">
+            <img src="images/myLogo.gif" width="60" height="60"
+              alt="My Logo" style="float: right; margin-right: 20px;" />
+            </div>
+            <div class="clear"></div>
+            -->
+        </div>			<!-- close id="content"> -->
+      <div id="footer">
+        <div id="requiredLinks">
+          •
+          <a href="http://www.tamu.edu/" title="Texas A&amp;M University">Texas A&amp;M University</a>
+          •
+        </div>		<!-- close id="requiredLinks" -->
+      </div>		<!-- close id="footer" -->
+  </div>		<!-- close id="page" -->
+
+
+
+</div>
+</body></html>

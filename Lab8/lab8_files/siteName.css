@@ -1,0 +1,200 @@
+body {
+  font-size: 90%;
+  color: #111;
+  background: #dbdbdb url(../images/pageBg.jpg) repeat-x;
+  padding: 20px 0px;
+}
+
+a:link, a:visited {
+  color: #500000;
+  background-color: inherit;
+}
+
+a:hover {
+  color: #500000;
+  background-color: #fbead8;
+}
+
+ul {
+  list-style-image: url(../images/bullet.gif);
+}
+
+
+/*  ******************************************************* */
+/*  The #page element controls the width of the page.       */
+/*  For wider pages be sure to adjust the width             */
+/*  of #pageContent by the same amount of adjustment here.  */
+/*  ******************************************************* */
+
+#page {
+  width: 750px;
+  margin: auto;
+  border: 1px solid #111;
+}
+
+/* ****************************** */
+/*        Page Header             */
+/* ****************************** */
+
+#header {
+  color: #111;
+  background: #500000 url(../images/headerBG.gif);
+  height: 80px;
+  border-bottom: 1px solid #500000;
+}
+
+#headerLogo {
+  float: left;
+  margin-top: 20px;
+}
+
+#headerLogo a:hover {
+  background: none;
+}
+
+#topTitle {
+  font-size: 130%; 
+  text-align: right; 
+  margin-right: 30px;
+  margin-top: 0px;
+  padding-top: 5px;
+  color: #111;
+}
+
+#topTitle h1 {
+  padding: 0px;
+  margin: 0px;
+  color: #efefef;
+  background-color: inherit;
+  font-family: "New Baskerville", Georgia, "Times New Roman", Times, serif;
+  font-variant: small-caps;
+  font-style: italic;
+}
+
+#searchForm {
+  float: right;
+  margin-top: 10px;
+  margin-right: 35px;
+}
+
+#imageRotation {
+  margin: 0px;
+  padding: 0px;
+  border-top: 1px solid #500000;
+}
+
+/* ****************************** */
+/*        Page Body               */
+/* ****************************** */
+
+#navigation {
+  height: 25px;
+  padding: 0px;
+  color: #efefef;
+  background: #818799 url(../images/dropShadow.gif) bottom repeat-x;
+  text-align: center;
+}
+
+#navigation a:link, #navigation a:visited {
+  color: white;
+  font-size: 90%;
+  background-color: #818799;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-bottom: 2px solid #adb2b5;
+}
+
+#navigation a:hover {
+  border-bottom: 2px solid #fbead8;
+  background-color: #818799;
+}
+
+#content {
+  color: #111;
+  background-color: #efefef;
+}
+
+#pageContent {
+  width: 700px;
+  padding: 5px 15px;
+  border: none;
+}
+
+#rightContentWrapper {
+  float: right;
+  width: 215px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+#rightContent {
+ padding: 0px 10px;
+ padding-bottom: 50px;
+}
+
+#rightContentTitleWrapper {
+  color: #d9d1bd;
+  width: 185px;
+  background-color: #332c2c;
+  border-bottom: 3px ridge #adb2b5;
+  border-right: 3px ridge #adb2b5;
+  border-top: 3px groove #adb2b5;
+  border-left: 3px groove #adb2b5;
+}
+
+#rightContentTitle {
+  text-align: center;
+  padding: 5px 0px;
+}
+
+#rightContentText {
+  padding: 5px;
+  font-size: small;
+}
+
+#quickLinkList {
+  margin-left: 0px;
+  padding-left: 10px;
+}
+
+#quickLinkList li {
+  padding-bottom: 0.66em;
+}
+
+/* ****************************** */
+/*        Page Footer             */
+/* ****************************** */
+
+#footer {
+  color: #d9d1bd;
+  background-color: #500000;
+}
+
+#footer a:link, #footer a:visited {
+  color: #d9d1bd;
+  background-color: inherit;
+  font-size: 90%;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+}
+
+#requiredLinks {
+  padding: 5px 0px;
+  text-align: center;
+}
+
+/* ****************************************** */
+/*        General IDs and Classes             */
+/* ****************************************** */
+
+.pageTitle {
+  color: #500000;
+  margin-right: 5px;
+  font-style: italic;
+  font-family: "New Baskerville", Georgia, "Times New Roman", Times, serif;
+  border-bottom: 3px double #500000;
+}

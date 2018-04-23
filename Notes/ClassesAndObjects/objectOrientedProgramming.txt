@@ -1,0 +1,16 @@
+object oriented techniques were made so that 
+changing decisions in the future is easier. 
+
+C++ is object oriented. 
+
+Functions associated with objects are 
+called methods.
+
+If something is a noun, that's a good indicator 
+for stuff that could be objects.
+
+encapsulation - another word for abstraction.
+- hiding details.
+
+
+We create new types when we make objects and classes 

@@ -1,0 +1,105 @@
+body, h1, h2, h3, h4, h5, h6, p, div, ul, ol, li {
+  width: 100%;
+  color: black;
+  background-color: white;
+  font-family: "New Baskerville", Georgia, "Times New Roman", Times, serif;
+}
+
+a:link, a:visited {
+  color: black;
+  background-color: white;
+  text-decoration: underline;
+}
+
+
+/* *************************************** */
+/* Generic Classes (mirrors screen styles) */ 
+/* *************************************** */
+body, #page {
+  margin: 0px;
+  padding: 0px;
+}
+
+a img {
+  border: none;
+}
+
+.printMe, .printme {
+  display: block;
+  visibility: visible;
+}
+
+.screenMe, .screenme {
+  display: none;
+  visibility: hidden;
+}
+
+.small {
+  font-size: small;
+}
+
+.center, .centered {
+  text-align: center;
+  margin: auto;
+}
+
+.clear, .spacer {
+  clear: both;
+}
+
+.indent {
+  padding-left: 30px;
+}
+
+
+/* *************************************** */
+/*  Header Styles                          */ 
+/* *************************************** */
+
+#headerLogo {
+  position: relative;
+  top: 0px;
+}
+
+#searchForm, #skipNav {
+  display: none;
+  visibility: hidden;
+}
+
+#topTitle {
+  position: relative;
+  margin-top: 1em;
+  font-family: "New Baskerville", Georgia, "Times New Roman", Times, serif;
+  font-variant: small-caps;
+  font-style: italic;
+}
+
+#navigation {
+  margin-bottom: 1em;
+}
+/* *************************************** */
+/*  Body Styles                          */ 
+/* *************************************** */
+
+.pageTitle {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}
+
+/* *************************************** */
+/*  Index Page Styles                      */ 
+/* *************************************** */
+
+#rightContentTitle {
+  margin-top: 1em;
+  font-size: 110%;
+  font-weight: bold;
+}
+
+
+/* *************************************** */
+/*  Footer Styles                          */ 
+/* *************************************** */
+
+

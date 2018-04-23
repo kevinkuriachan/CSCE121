@@ -1,0 +1,333 @@
+
+<!-- saved from url=(0051)http://robotics.cs.tamu.edu/dshell/cs121/l6/l6.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+
+  
+
+  <meta name="title" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <meta name="DC.Title" content="">
+  <meta name="DC.Author" content="">
+  <meta name="DC.Subject.Keyword" content="">
+  <meta name="DC.Description" content="">
+
+  <link rel="shortcut icon" href="http://robotics.cs.tamu.edu/dshell/cs121/images/favicon.ico">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab6_files/basic.css"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab6_files/siteName.css"> 
+  <link rel="stylesheet" type="text/css" media="print" href="./lab6_files/print.css"> 
+
+  <link rel="stylesheet" href="./lab6_files/atom-one-light.css"> 
+  <script src="./lab6_files/highlight.pack.js.download"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+
+  pre.tight {
+    margin-top: -1.1em;
+    margin-bottom: -1.1em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  code {
+    font-size: 120%; 
+  }
+
+.hinthidden {
+    visibility: hidden;
+    background: #eee;
+    border: 1px dotted #aaa;
+    padding: 0px;
+    }
+.hinthidden:hover {
+    visibility: visible;
+}
+
+.hintvisible {
+    background-color: #eeeeee; 
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding-left: 6px; 
+    padding-right: 6px; 
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+    font-size: 60%;
+    visibility: visible;
+}
+
+.hinttext {
+    color: #999;
+    font-size: 75%; 
+}
+
+</style>
+
+
+<style></style></head>
+
+<body>
+
+<div id="page">
+  <div id="header">
+    <div id="headerLogo">
+      <a href="http://www.tamu.edu/" title="Texas A&amp;M University Home"><img src="./lab6_files/primaryMark.gif" alt="Texas A&amp;M University primary mark" height="42" width="171"></a>
+    </div>
+
+    <a href="http://robotics.cs.tamu.edu/dshell/cs121/l6/l6.html#skipNav"><img src="./lab6_files/spacer.gif" alt="" style="float: left;" height="1" width="1"></a>
+
+    <div id="topTitle">
+      <h1>Department of Computer Science and Engineering</h1>
+    </div>
+
+  <div id="imageRotation">
+          <a href="http://robotics.cs.tamu.edu/" title="Home Link"><img src="./lab6_files/insideSample3.jpg" style="display: block;" alt="Sample Image" height="40" width="750"></a>
+  </div>
+
+  <div id="content">
+
+  <div id="pageContent">
+    <a name="skipNav"></a>
+
+
+<!-- ==================== BEGIN YOUR CONTENT HERE ==================== -->
+
+<h1 class="pageTitle">CSCE 121: Introduction to Program Design and Concepts</h1>
+
+<h1>Lab Exercise Six</h1>
+<br>
+
+<h2>Objective</h2>
+<p class="bodytext">
+This lab will give you some practice with 
+recursion (in the first question) and also
+processing file input (in the second one). 
+</p>
+
+<h3>How far must I get?</h3>
+<p class="bodytext">
+There are fewer questions this week to make it easier for everyone to finish.
+Please try your best to do so!
+</p>
+
+<hr>
+
+
+<h2>Recursion: Lucas numbers</h2>
+
+<p class="bodytext">
+No doubt you'll have heard of the Fibonacci series. 
+<a href="https://en.wikipedia.org/wiki/%C3%89douard_Lucas">François Lucas</a>
+was the person who made them famous and a closely related series of
+numbers were named for him. With the elements denoted
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>i</sub></span></i>,
+his series begins thus:
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>0</sub>=2</span></i>,
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>1</sub>=1</span></i>,
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>2</sub>=3</span></i>,
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>3</sub>=4</span></i>,
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>4</sub>=7</span></i>, …<br>
+The definition for a general element in the series is recursive, as follows:
+</p>
+<center><img src="./lab6_files/lucas.png"></center><br>
+
+<p class="bodytext">
+i. Write a recursive function that computes the <i>n<sup>th</sup></i> element, 
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>n</sub></span></i>.
+</p>
+
+<p class="bodytext">
+ii. Now call your previous function to compute the value of 
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>n</sub></span></i><span style="padding-left:2px; font-size: 130%">/</span><i><span style="font-family: STIXGeneral; color: black;">L<sub>n-<span style="font-size: 70%">1</span></sub></span></i>. 
+Increase the value of <i>n</i> until this ratio changes by a factor less than <i>10<sup>-4</sup></i>.
+</p>
+
+<p class="bodytext">
+iii. If you try to compute 
+<i><span style="font-family: STIXGeneral; color: black;">L<sub>50</sub></span></i> with your 
+function, you'll probably find that it takes an unreasonably long time to return a result.
+An important question is: for a particular <i>n</i>, how many times is the
+function called? 
+Modify your code from the first part, instrumenting it so that it also counts
+the number of function calls. Can you figure out how to express this count (i.e.,
+the total number of function calls) in terms of
+<i>n</i>?
+</p>
+
+<p class="bodytext">
+iv. Rather than merely calling your recursive function, what is a more efficient way to compute large Lucas numbers?
+</p>
+
+
+
+<h2>Sentences of moderate length please!</h2>
+<p class="bodytext">
+Some students have said they find my questions too wordy. 
+This question involves writing some code that will help me examine my writing
+style, by selecting only those sentences that are of moderate length.
+</p>
+
+<p class="bodytext">
+Write a program that prints out all the sentences in a text file where:
+<code>min</code> ≤ <i>length</i> ≤ <code>max</code>.<br>
+Assume that a sentence ends in either a period, question mark, or
+exclamation point.  Count all the blanks and punctuation in computing
+<i>length</i>, with the exception of any spaces separating one sentence
+from the next. (All end-of-line characters, i.e. the <code>'\n'</code>, should simply be ignored.)
+</p>
+
+<p class="bodytext">
+You can also assume that every line in the file has fewer than 200 characters.
+However, you can't assume any bound on the length of the sentences
+in the file—so you shouldn't try store it all in a single
+<code>char</code> array. Nor should you assume any maximum on the 
+total number of sentences.
+</p>
+
+<p class="bodytext">
+Request the filename and also <code>min</code> and <code>max</code> values as inputs from the user.
+Ensure that they are positive integers with
+<code>min</code> ≤ <code>max</code> &lt; 1000.
+</p>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+            Start by writing some code that will print the file sentence by
+            sentence whilst respecting the constraint that you can't store the
+            whole thing in a single <code>char[]</code>.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+            Write a function that processes just one character.
+            Also, this problem is a case where using global variables might be a good idea.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>TESTING IDEAS</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+            Remember to test your code on an empty file, and also one with just a single punctuation mark. Finally, consider a file in which the final sentence in the file is missing its ending punctuation.
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+<h2>Puzzling*</h2>
+
+<p class="bodytext">
+Here's a question to think about:
+</p>
+<blockquote>
+Is it possible to fill an 8×8 grid with dominoes (2×1 in
+size) such that no two dominoes form a 2×2 square?
+</blockquote>
+
+
+
+
+<hr>
+
+<h3>Acknowledgements</h3>
+<p class="bodytext" style="font-size:90%">
+The program for outputting sentences of a given length was the original
+idea of <a href="http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html">John Dalbey</a>.
+The puzzle is from Anany Levitin and Maria Levitin, "Algorithmic Puzzles", Oxford University Press, 2011.
+</p>
+
+
+
+
+<!-- ===================== END YOUR CONTENT HERE ===================== -->
+
+          </div>		<!-- close id="pageContent -->
+          <!--
+          <div style="height: 60px; padding-bottom: 10px;">
+            <img src="images/myLogo.gif" width="60" height="60"
+              alt="My Logo" style="float: right; margin-right: 20px;" />
+            </div>
+            <div class="clear"></div>
+            -->
+        </div>			<!-- close id="content"> -->
+      <div id="footer">
+        <div id="requiredLinks">
+          •
+          <a href="http://www.tamu.edu/" title="Texas A&amp;M University">Texas A&amp;M University</a>
+          •
+        </div>		<!-- close id="requiredLinks" -->
+      </div>		<!-- close id="footer" -->
+  </div>		<!-- close id="page" -->
+
+
+
+</div>
+</body></html>

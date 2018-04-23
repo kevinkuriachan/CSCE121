@@ -1,0 +1,538 @@
+
+<!-- saved from url=(0051)http://robotics.cs.tamu.edu/dshell/cs121/l9/l9.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title></title>
+
+  
+
+  <meta name="title" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <meta name="DC.Title" content="">
+  <meta name="DC.Author" content="">
+  <meta name="DC.Subject.Keyword" content="">
+  <meta name="DC.Description" content="">
+
+  <link rel="shortcut icon" href="http://robotics.cs.tamu.edu/dshell/cs121/images/favicon.ico">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab9_files/basic.css"> 
+  <link rel="stylesheet" type="text/css" media="screen" href="./lab9_files/siteName.css"> 
+  <link rel="stylesheet" type="text/css" media="print" href="./lab9_files/print.css"> 
+
+  <link rel="stylesheet" href="./lab9_files/atom-one-light.css"> 
+  <script src="./lab9_files/highlight.pack.js.download"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+
+  pre.tight {
+    margin-top: -1.1em;
+    margin-bottom: -1.1em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  code {
+    font-size: 120%; 
+  }
+
+.hinthidden {
+    visibility: hidden;
+    background: #eee;
+    border: 1px dotted #aaa;
+    padding: 0px;
+    }
+.hinthidden:hover {
+    visibility: visible;
+}
+
+.hintvisible {
+    background-color: #eeeeee; 
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding-left: 6px; 
+    padding-right: 6px; 
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+    font-size: 60%;
+    visibility: visible;
+}
+
+.hinttext {
+    color: #999;
+    font-size: 75%; 
+}
+
+</style>
+
+
+<style></style></head>
+
+<body>
+
+<div id="page">
+  <div id="header">
+    <div id="headerLogo">
+      <a href="http://www.tamu.edu/" title="Texas A&amp;M University Home"><img src="./lab9_files/primaryMark.gif" alt="Texas A&amp;M University primary mark" height="42" width="171"></a>
+    </div>
+
+    <a href="http://robotics.cs.tamu.edu/dshell/cs121/l9/l9.html#skipNav"><img src="./lab9_files/spacer.gif" alt="" style="float: left;" height="1" width="1"></a>
+
+    <div id="topTitle">
+      <h1>Department of Computer Science and Engineering</h1>
+    </div>
+
+  <div id="imageRotation">
+          <a href="http://robotics.cs.tamu.edu/" title="Home Link"><img src="./lab9_files/insideSample3.jpg" style="display: block;" alt="Sample Image" height="40" width="750"></a>
+  </div>
+
+  <div id="content">
+
+  <div id="pageContent">
+    <a name="skipNav"></a>
+
+
+<!-- ==================== BEGIN YOUR CONTENT HERE ==================== -->
+
+<h1 class="pageTitle">CSCE 121: Introduction to Program Design and Concepts</h1>
+
+<h1>Lab Exercise Nine</h1>
+<br>
+
+<h2>Objective</h2>
+<p class="bodytext">
+The purpose of this lab is to help clarify the relationship between pointers and arrays; you will look
+at arrays of pointers, pointers to arrays, and the C/C++ treatment of multi-dimensional arrays. </p>
+
+<h3>A difference this week</h3>
+<p class="bodytext">
+This week's lab is a little different from prior labs.  There is 
+very little code to write. (Actually only about four
+lines of C++.) 
+</p>
+
+<p class="bodytext">
+Instead, this lab provides example code and you're expected 
+to work through it, poking at it to try make sense of what's going on. 
+The text should guide you in that process. By <i>"make sense"</i> I mean that you
+should be able to draw a diagram showing blocks in memory, and arrows for
+pointers like I've done in the lectures.</p>
+<hr>
+
+
+<h2>Pointers to elements within an array</h2>
+
+
+<p class="bodytext">
+Copy and paste this into your editor, then build the code and run the result.
+</p>
+
+<p class="bodytext">
+This program has an array of <code>char</code>s that stores
+a string. That string is passed to two functions, which are
+effectively identical: they print their sole argument. 
+The functions differ only in the type that they expect that argument to be.
+</p>
+
+
+
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bracket_function</span><span class="hljs-params">(<span class="hljs-keyword">char</span> str[])</span>
+</span>{
+    <span class="hljs-comment">// This line will print out what is passed on the call-stack to the function:</span>
+    <span class="hljs-comment">//C1: cout &lt;&lt; "str = " &lt;&lt; (void *)str &lt;&lt; endl;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Bracket Function: "</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="hljs-built_in">endl</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">star_function</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *str)</span>
+</span>{
+    <span class="hljs-comment">// This line will print out what is passed on the call-stack to the function:</span>
+    <span class="hljs-comment">//C2: cout &lt;&lt; "str = " &lt;&lt; (void *)str &lt;&lt; endl;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Star Function: "</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="hljs-built_in">endl</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">char</span> lyric[] = <span class="hljs-string">"...there's a Spirit can ne'er be told..."</span>;
+
+    star_function(lyric); <span class="hljs-comment">// L1: Maybe this is a trifle surprising?</span>
+    bracket_function(lyric);
+
+    star_function(&amp;lyric[<span class="hljs-number">0</span>]);
+    bracket_function(&amp;lyric[<span class="hljs-number">0</span>]); <span class="hljs-comment">// L2: And also this?</span>
+
+    <span class="hljs-comment">// These two show how it can actually be rather useful:</span>
+    <span class="hljs-comment">// C3: star_function(&amp;lyric[32]);</span>
+    <span class="hljs-comment">// C4: bracket_function(&amp;lyric[32]); </span>
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+
+<p class="bodytext">
+As we've seen in class, arrays degrade to pointers, so the
+functions are equivalent.
+</p>
+<ol>
+<li style="margin-top:14px;">The array can be passed to the function expecting a pointer (see line <code>L1</code>).
+</li><li style="margin-top:14px;">A pointer  can be passed the function expecting an array (see line <code>L2</code>).
+(The pointer is just the address of the first element of the array.)
+</li><li style="margin-top:14px;">Uncomment <code>C1</code> and <code>C2</code>, and 
+see what it does. 
+The input is cast (like we've seen for <code>int</code>s and <code>float</code>s) in order to lose the typing information. 
+We do this because <code>cout</code>, by default,
+will show what is at the address when you give it a <code>char[]</code>
+or <code>char *</code>. Put another way: if <code>cout</code> receives a
+string, it will automatically dereference it.
+To print the actual address, not what is at that address, we pretend that it doesn't contain <code>char</code>s.
+(If you find the <code>void</code> weird, you can make it an <code>int</code> or some other type, too.)
+</li><li style="margin-top:14px;">Next, uncomment <code>C3</code>. Before you run the result,
+think about the addresses being passed
+and form an hypothesis of what you think it'll do. Did you get it?
+</li><li style="margin-top:14px;">Finally, uncomment <code>C4</code>. Will that compile? </li></ol>
+
+<p class="bodytext">
+If any of the preceding is troubling to you, try to draw a memory diagram.
+Look at the memory addresses; does the numerical difference make sense to you?
+How would it differ if the arrays were of <code>int</code>s, <code>float</code>s, or some sort of <code>struct</code>?
+</p>
+
+
+<h2>Arrays with pointers to arrays</h2>
+
+<p class="bodytext">
+Copy and paste the following code into your editor, then build the code and run the result.
+</p>
+
+<p class="bodytext">
+In class, we (briefly) examined an example of a 2D array. Unlike many other
+languages C/C++ does not allocate a sequential block for a multi-dimensional array.
+Instead, in the innermost level it has standard 1D arrays. The second
+dimension is a 1D array of pointers.  The following code is intended to help
+clarify how this works.
+</p>
+
+
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">float</span> row_one[<span class="hljs-number">2</span>] = {<span class="hljs-number">3.0</span>, <span class="hljs-number">1.4</span>};
+    <span class="hljs-keyword">float</span> row_two[<span class="hljs-number">3</span>] = {<span class="hljs-number">4.5</span>, <span class="hljs-number">7.2</span>, <span class="hljs-number">5.6</span>};
+    <span class="hljs-keyword">float</span> row_three[<span class="hljs-number">4</span>] = {<span class="hljs-number">15.6</span>, <span class="hljs-number">18.4</span>, <span class="hljs-number">22.2</span>, <span class="hljs-number">105.0</span>};
+
+    <span class="hljs-keyword">float</span> *different_sized[<span class="hljs-number">3</span>] = {row_one, row_two, row_three}; <span class="hljs-comment">// D1</span>
+
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"different_sized := "</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; different_sized[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-keyword">float</span> **synonym = different_sized; <span class="hljs-comment">// that's also a pointer to a pointer</span>
+
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"synonym := "</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-string">"\t"</span> &lt;&lt; synonym[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+
+<p class="bodytext">
+An advantage of the C/C++ method is that all the elements within a certain
+dimension needn't be of the same size. This is illustrated by with
+1D variables named <code>row_one</code>, <code>row_two</code>, and <code>row_three</code>. 
+The 2D array <code>different_sized</code> is declared to have 3 elements, each
+of which we set up to point to each row. It is useful to draw a memory diagram,
+the <code>row</code>s should just be data stored linearly, and the 
+<code>different_sized</code> elements should have three arrows departing it.
+</p>
+
+<p class="bodytext">
+We can see that indexing works left to right: <code>different_sized[i][j]</code> first
+accesses the pointer stored in the <span style="font-family: STIXGeneral; color: black;">i<sup>th</sup></span>
+entry of <code>different_sized</code>. The pointer is followed, giving an array. 
+In that array, the <span style="font-family: STIXGeneral; color:
+black;">j<sup>th</sup></span> element is accessed. (It might be useful
+to follow this two-step
+process on your diagram.)
+</p>
+
+<p class="bodytext">
+In the previous question, we saw that a <code>char[]</code> is equivalent to
+a <code>char *</code>. That is general, so for any type 
+<span style="font-family: STIXGeneral; color: black;">T</span>
+we have that 
+<span style="font-family: STIXGeneral; color: black;">T[] = T*</span>.
+Now consider the definition on line <code>D1</code> which
+reads <code>float *different_sized[3]</code>. If we think of that as 
+<code>(float *) different_sized[3]</code>, then we can think of a 
+type <code>float **</code>. That is why the code defining <code>synonym</code>
+works similarly. The two layers of indexing essentially become a double dereferencing operation.
+</p>
+
+<p class="bodytext">
+You might find it helpful to print <code>different_sized</code> and
+<code>synonym</code> to check their memory addresses. You can also
+check the addresses after one level of indexing.
+But note that <code>&amp;different_sized</code> ≠
+<code>&amp;synonym</code>, which are of type <code>float ***</code>.
+</p>
+
+<div class="hinthidden">
+<table><tbody><tr><td valign="center">
+<table class="hintvisible"><tbody><tr><td><span style="font-size: 200%;"><b>?</b></span></td><td>HINT</td></tr></tbody></table>
+</td>
+<td style="padding-left: 14px;">
+<table>
+    <tbody><tr>
+        <td class="hinttext">
+            &nbsp;&nbsp;&nbsp;&nbsp;This is how I did that:<br>
+    <code>
+cout &lt;&lt; "&amp;different_sized \t= " &lt;&lt; &amp;different_sized&lt;&lt; endl;<br>
+cout &lt;&lt; "&amp;synonym \t\t= " &lt;&lt; &amp;synonym &lt;&lt; endl;<br>
+cout &lt;&lt; "different_sized \t= " &lt;&lt; different_sized&lt;&lt; endl;<br>
+cout &lt;&lt; "synonym \t\t= " &lt;&lt; synonym &lt;&lt; endl;<br>
+cout &lt;&lt; "different_sized[1] \t= " &lt;&lt; different_sized[1] &lt;&lt; endl;<br>
+cout &lt;&lt; "synonym[1] \t\t= " &lt;&lt; synonym[1] &lt;&lt; endl;
+    </code>
+        </td>
+    </tr>
+</tbody></table></td></tr>
+</tbody></table>
+</div>
+
+
+<h2>Arrays of pointers</h2>
+
+<p class="bodytext">
+Your job in this question is to do a bit of detective work to understand
+how this program operates.
+Start with the following code, which should compile and run out of the box.
+It provides an example of how thinking of arrays as pointers can actually
+be rather handy. 
+</p>
+
+
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">valid_word_char</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ((<span class="hljs-string">'A'</span> &lt;= ch) &amp;&amp; (<span class="hljs-string">'Z'</span> &gt;= ch)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">if</span> ((<span class="hljs-string">'a'</span> &lt;= ch) &amp;&amp; (<span class="hljs-string">'z'</span> &gt;= ch)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">if</span> ((<span class="hljs-string">'0'</span> &lt;= ch) &amp;&amp; (<span class="hljs-string">'9'</span> &gt;= ch)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">if</span> ((<span class="hljs-string">'\''</span> == ch) || (<span class="hljs-string">'.'</span> == ch))  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_single_word</span><span class="hljs-params">(<span class="hljs-keyword">char</span> str[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (valid_word_char(str[i])) 
+        <span class="hljs-built_in">cout</span> &lt;&lt; str[i++];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc_word_length</span><span class="hljs-params">(<span class="hljs-keyword">char</span> str[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (valid_word_char(str[i]))
+        i++;
+    <span class="hljs-keyword">return</span> i;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">char</span> *<span class="hljs-title">increment_word</span><span class="hljs-params">(<span class="hljs-keyword">char</span> str[])</span>
+</span>{
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (valid_word_char(str[i])) 
+        i++; <span class="hljs-comment">// Pass through word</span>
+    <span class="hljs-keyword">while</span> ((str[i] != <span class="hljs-string">'\0'</span>) &amp;&amp;  (!valid_word_char(str[i]))) 
+        i++; <span class="hljs-comment">// To next word</span>
+    <span class="hljs-keyword">return</span> &amp;str[i]; <span class="hljs-comment">// This is a pointer to the next word</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> max = <span class="hljs-number">200</span>;
+    <span class="hljs-keyword">char</span> sentence[max] = <span class="hljs-string">"The rhino is a homely beast,\nFor human eyes he's not a feast.\nFarewell, farewell, you old rhinoceros,\nI'll stare at something less prepoceros."</span>; <span class="hljs-comment">// (of Ogden Nash)</span>
+    <span class="hljs-keyword">char</span> *words[max];
+
+    <span class="hljs-built_in">cout</span> &lt;&lt; sentence &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-keyword">int</span> w = <span class="hljs-number">0</span>;
+    words[<span class="hljs-number">0</span>] = sentence;
+    <span class="hljs-keyword">while</span> (words[w][<span class="hljs-number">0</span>] != <span class="hljs-string">'\0'</span>) {
+        words[w+<span class="hljs-number">1</span>] = increment_word(words[w]);
+        w++;
+    }
+
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---- Total words w = "</span> &lt;&lt; w &lt;&lt; <span class="hljs-string">" -------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; w; i++) {	
+        print_single_word(words[i]);
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+
+<p class="bodytext">
+If you run it, you'll see what it does.
+</p>
+<ol>
+<li style="margin-top:14px;">
+To understand how it does what it's doing, first look at the function 
+<code>print_single_word</code>. 
+I wrote that rather than just calling <code>cout</code>, can you see why?
+(If not, put <code>cout</code> in the code and see what it does.)
+</li>
+
+<li style="margin-top:14px;">Though the <code>calc_word_length</code>
+function isn't called, looking at it can help see how the string is being
+processed.</li>
+
+<li style="margin-top:14px;">It can help to draw a diagram.
+Mine has 
+a series of characters for <code>sentence</code> and then another
+with a series of boxes, each as the source for an arrow, for
+<code>words</code>. If you step through a short example, you'll
+get the gist of how those arrows get set. 
+</li>
+</ol>
+
+
+<h2>Understanding arguments passed to your program</h2>
+
+<p class="bodytext">
+When I run most commands from the console/shell, I typically provide them
+with command line arguments. Those might be files to operate on, or
+flags to control the program's behavior, or other such things. Thus far, we've not
+actually been declaring our code's <code>main</code> function in a 
+way that allows processing of those arguments.
+</p>
+
+<p class="bodytext">
+We should write our <code>main</code> function like this (and from now on we will):
+</p>
+
+<pre class="tight"><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span>
+</span>{
+  ...
+}
+</code></pre>
+
+<p class="bodytext">
+or, equivalently:
+</p>
+
+<pre class="tight"><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> **argv)</span>
+</span>{
+  ...
+}
+</code></pre>
+
+<p class="bodytext">
+The first argument, usually called <code>argc</code>, tells the program
+how many command line arguments were passed to the program on its invocation. The 
+second argument, <code>argv</code>, is an array of strings containing
+the arguments themselves.
+</p>
+
+<p class="bodytext">
+Write a <code>main</code> which prints out the arguments passed to the 
+program.
+For example, when I run my program like this:<br>
+</p>
+
+<pre class="tight"><code class="hljs">./prog apples bananas oranges</code></pre>
+
+<p class="bodytext">
+it outputs:
+</p>
+<pre class="tight"><code class="hljs">Argument #0 is ./prog
+Argument #1 is apple
+Argument #2 is bananas
+Argument #3 is oranges 
+</code></pre>
+
+<p class="bodytext">
+&nbsp;
+</p>
+
+
+
+
+<h3>Acknowledgements</h3>
+<p class="bodytext" style="font-size:90%">
+The lyric is, of course, from <a href="https://en.wikipedia.org/wiki/Spirit_of_Aggieland">The Spirit of Aggieland</a>.
+The poem in the penultimate question is Ogden Nash's creation.
+</p>
+
+
+
+
+<!-- ===================== END YOUR CONTENT HERE ===================== -->
+
+          </div>		<!-- close id="pageContent -->
+          <!--
+          <div style="height: 60px; padding-bottom: 10px;">
+            <img src="images/myLogo.gif" width="60" height="60"
+              alt="My Logo" style="float: right; margin-right: 20px;" />
+            </div>
+            <div class="clear"></div>
+            -->
+        </div>			<!-- close id="content"> -->
+      <div id="footer">
+        <div id="requiredLinks">
+          •
+          <a href="http://www.tamu.edu/" title="Texas A&amp;M University">Texas A&amp;M University</a>
+          •
+        </div>		<!-- close id="requiredLinks" -->
+      </div>		<!-- close id="footer" -->
+  </div>		<!-- close id="page" -->
+
+
+
+</div>
+</body></html>
