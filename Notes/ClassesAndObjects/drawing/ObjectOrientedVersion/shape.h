@@ -7,8 +7,14 @@ class Shape {
 // this says what all shapes have in common
 
 	public:
-		void draw();
-		void doubleInSize();
+		virtual void draw() = 0; // virtual means it can be overwritten if a more appropriate method lower in the heirarchy 
+		virtual void doubleInSize() = 0;
+		// pointing them to 0 is the same as null
+		// therefore, the function pointer points to null
+		// at this point, these functions do not exist.
+		// this is called an abstract class 
+		// it doesn't actually point to address 0, 
+		// its being used as a keyword for abstract 
 }
 
 

@@ -19,6 +19,12 @@ Rectangle::Rectangle(int w, int h)
 	height = h; 
 }
 
+Rectangle::~Rectangle() // our destructor 
+{
+    cout << "Rectangle destructor" << endl;
+}
+
+
 void Rectangle::doubleInSize()
 {
 	cout << "Inside Rectangle::doubleInSize()" << endl;

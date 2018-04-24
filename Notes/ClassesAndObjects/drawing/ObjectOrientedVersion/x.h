@@ -5,7 +5,7 @@ class  X : public Shape {
 
 	X(int size);
 
-	void draw();
+	virtual void draw();
 
 	private:
 	// Fields

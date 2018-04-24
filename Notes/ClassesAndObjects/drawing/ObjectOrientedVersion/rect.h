@@ -15,9 +15,11 @@ class  Rectangle : public Shape { // : public Shape says that rectangle is a sha
 	// then later you can assume they are positive because only functions
 	// in this class could have modified them 
 
-	void doubleInSize();
+	virtual ~Rectangle() // a destructor, all destructors should be made virtual 
 
-	void draw();
+	virtual void doubleInSize();
+
+	virtual void draw();
 
 	private:
 	// Fields
