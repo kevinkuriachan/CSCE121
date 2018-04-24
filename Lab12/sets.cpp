@@ -48,6 +48,7 @@ bool contains_item(set_of_str_t * list, string element)
 void add_item(set_of_str_t * &list, string toAdd)
 {
 	//set_of_str_t * hold = list;
+	assert(list!=NULL);
 	str_t * newElement = new str_t;
 	newElement->word = toAdd;
 	newElement->next = list->head;
@@ -92,9 +93,10 @@ void del_item(set_of_str_t * &list, string toDelete)
 
 set_of_str_t * union_(set_of_str_t* listA, set_of_str_t* listB)
 {
-	set_of_str_t * both = new set_of_str_t;
+	set_of_str_t * both = create_set_of_str();
 	str_t * walkerA = listA->head;
 	str_t * walkerB = listB->head;
+	if (is_empty(listA) && is_empty(listB)) return both;
 	while (walkerA!=NULL)
 	{
 		add_item(both, walkerA->word);
@@ -105,11 +107,12 @@ set_of_str_t * union_(set_of_str_t* listA, set_of_str_t* listB)
 		add_item(both, walkerB->word);
 		walkerA = walkerB->next;
 	}
+	return both;
 }
 
 set_of_str_t * intersection(set_of_str_t * listA, set_of_str_t *listB)
 {
-	set_of_str_t * cross = new set_of_str_t;
+	set_of_str_t * cross = create_set_of_str();
 	str_t * walkerA = listA->head;
 	if (is_empty(listA) || is_empty(listB)) return cross;
 	while (walkerA != NULL)

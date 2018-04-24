@@ -38,4 +38,5 @@ int main(int argc, char *argv[])
     //destroy_set_of_str(both_set);
     destroy_set_of_str(tasty_set);
     destroy_set_of_str(fruity_set);
+    destroy_set_of_str(both_set);
 }
