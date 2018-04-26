@@ -1,0 +1,6 @@
+since a program jumps to a mem location when it
+excecutes a function,
+we can create pointers to functions / blocks of code
+as well as one to data.
+
+virtual functions are pointers to the function.

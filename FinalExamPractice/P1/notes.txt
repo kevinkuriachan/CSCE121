@@ -1,0 +1,13 @@
+- null terminated char array 
+- take a string and find the end of a word 
+- ask yourself: what is an easier version of the problem:
+	- going through char array and making a new pointer for every new word 
+split("...")
+	start at linked list 
+	for each word:
+		add a block of data to my list 
+		make a block for the word if already seen
+	return head of linked list 
+
+
+//ignore line

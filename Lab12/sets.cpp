@@ -47,7 +47,6 @@ bool contains_item(set_of_str_t * list, string element)
 
 void add_item(set_of_str_t * &list, string toAdd)
 {
-	//set_of_str_t * hold = list;
 	assert(list!=NULL);
 	str_t * newElement = new str_t;
 	newElement->word = toAdd;
