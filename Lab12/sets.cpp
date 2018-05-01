@@ -13,12 +13,44 @@ struct set_of_str_t {
 	str_t * head;
 }; 
 
+struct iterator_t {
+	str_t * head;
+	str_t * currentStr;
+	str_t * getFirst();
+	str_t * getNext();
+	str_t * hasMore();
+};
+
+str_t * getFirst()
+{
+	return head;
+}
+
+str_t * getNext()
+{
+
+}
+
+str_t * hasMore()
+{
+
+};
+
 set_of_str_t * create_set_of_str()
 {
 	set_of_str_t * set = new set_of_str_t;
 	assert(set!=NULL); // something went wrong
 	set->head = NULL;
 	return set;
+}
+
+iterator_t * create_iterator(set_of_str_t * set)
+{
+	iterator_t * it = new iterator_t;
+	assert(set!=NULL); // something went wrong
+	it->head = set->head;
+	it->currentStr = set->head;
+	return it;
 }
 
 void print_list(set_of_str_t * list)

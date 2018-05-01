@@ -10,4 +10,8 @@ split("...")
 	return head of linked list 
 
 
-//ignore line
+Cleanup part:
+	cannot delete num the first time you see it. 
+	- you could walk through linked list, if there is a duplicate of current element,
+		set duplicate's pointer to NULL
+	- walk through and delete every element 

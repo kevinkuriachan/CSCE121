@@ -1,0 +1,6 @@
+/*
+cannot create an array of visited values because we dont know size.
+cannot go through list to find size because there might be a loop.
+
+
+*/
