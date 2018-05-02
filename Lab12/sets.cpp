@@ -13,30 +13,36 @@ struct set_of_str_t {
 	str_t * head;
 };
 
-/*
+
 struct iterator_t {
-	str_t * head;
-	str_t * currentStr;
-	str_t * getFirst();
-	str_t * getNext();
-	str_t * hasMore();
+	set_of_str_t * set;
+	str_t * current;
 };
 
-str_t * getFirst()
+iterator_t * create_iterator(set_of_str_t * setToIterate)
 {
-	return head;
+	iterator_t * iterator = new iterator_t;
+	iterator->set = setToIterate;
+	iterator->current = setToIterate->head;
+	return iterator;
 }
 
-str_t * getNext()
+str_t * getFirst(iterator_t * it)
 {
-
+	return (it->set->head);
 }
 
-str_t * hasMore()
+str_t * getNext(iterator_t * it)
 {
+	it->current = it->current->next;
+	return (it->current);
+}
 
-};
-*/
+bool hasMore(iterator_t * it)
+{
+	return (it->current->next != NULL);
+}
+
 set_of_str_t * create_set_of_str()
 {
 	set_of_str_t * set = new set_of_str_t;
@@ -44,17 +50,6 @@ set_of_str_t * create_set_of_str()
 	set->head = NULL;
 	return set;
 }
-
-/*
-iterator_t * create_iterator(set_of_str_t * set)
-{
-	iterator_t * it = new iterator_t;
-	assert(set!=NULL); // something went wrong
-	it->head = set->head;
-	it->currentStr = set->head;
-	return it;
-}
-*/
 
 void print_list(set_of_str_t * list)
 {
@@ -133,7 +128,7 @@ set_of_str_t * union_(set_of_str_t* listA, set_of_str_t* listB)
 	set_of_str_t * both = create_set_of_str();
 	str_t * walkerA = listA->head;
 	str_t * walkerB = listB->head;
-	if (is_empty(listA) && is_empty(listB)) return both;
+	if (is_empty_(listA) && is_empty_(listB)) return both;
 	while (walkerA!=NULL)
 	{
 		add_item(both, walkerA->word);
@@ -151,7 +146,7 @@ set_of_str_t * intersection(set_of_str_t * listA, set_of_str_t *listB)
 {
 	set_of_str_t * cross = create_set_of_str();
 	str_t * walkerA = listA->head;
-	if (is_empty(listA) || is_empty(listB)) return cross;
+	if (is_empty_(listA) || is_empty_(listB)) return cross;
 	while (walkerA != NULL)
 	{
 		if (contains_item(listB, walkerA->word) && !contains_item(cross, walkerA->word))
@@ -163,7 +158,7 @@ set_of_str_t * intersection(set_of_str_t * listA, set_of_str_t *listB)
 	return cross;
 }
 
-bool is_empty(set_of_str_t* list)
+bool is_empty_(set_of_str_t* list)
 {
 	return (list == NULL);
 }

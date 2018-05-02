@@ -35,7 +35,14 @@ int main(int argc, char *argv[])
     cout << "intersection: " << endl;
     print_list(both_set);
 
-    //destroy_set_of_str(both_set);
+    cout << "iteration: " << endl;
+    for (iterator_t * it = create_iterator(fruity_set); hasMore(it); getNext(it))
+    {
+        str_t * item = it->current;
+        string toPrint = item->word;
+        cout <<toPrint<<endl;
+    }
+
     destroy_set_of_str(tasty_set);
     destroy_set_of_str(fruity_set);
     destroy_set_of_str(both_set);
