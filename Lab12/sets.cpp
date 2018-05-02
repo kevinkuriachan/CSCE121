@@ -40,7 +40,12 @@ str_t * getNext(iterator_t * it)
 
 bool hasMore(iterator_t * it)
 {
-	return (it->current->next != NULL);
+	return (it->current != NULL);
+}
+
+string getCurrWord(iterator_t * it)
+{
+	return it->current->word;
 }
 
 set_of_str_t * create_set_of_str()

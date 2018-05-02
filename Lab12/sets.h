@@ -14,6 +14,7 @@ void add_item(set_of_str_t * &name, string);
 void del_item(set_of_str_t * &name, string);
 void destroy_set_of_str(set_of_str_t* &name);
 iterator_t * create_iterator(set_of_str_t * setToIterate);
+string getCurrWord(iterator_t * it);
 str_t * getFirst(iterator_t * it);
 str_t * getNext(iterator_t * it);
 bool hasMore(iterator_t * it);
