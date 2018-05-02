@@ -11,8 +11,9 @@ struct str_t {
 
 struct set_of_str_t {
 	str_t * head;
-}; 
+};
 
+/*
 struct iterator_t {
 	str_t * head;
 	str_t * currentStr;
@@ -35,7 +36,7 @@ str_t * hasMore()
 {
 
 };
-
+*/
 set_of_str_t * create_set_of_str()
 {
 	set_of_str_t * set = new set_of_str_t;
@@ -44,6 +45,7 @@ set_of_str_t * create_set_of_str()
 	return set;
 }
 
+/*
 iterator_t * create_iterator(set_of_str_t * set)
 {
 	iterator_t * it = new iterator_t;
@@ -52,6 +54,7 @@ iterator_t * create_iterator(set_of_str_t * set)
 	it->currentStr = set->head;
 	return it;
 }
+*/
 
 void print_list(set_of_str_t * list)
 {
@@ -80,10 +83,13 @@ bool contains_item(set_of_str_t * list, string element)
 void add_item(set_of_str_t * &list, string toAdd)
 {
 	assert(list!=NULL);
-	str_t * newElement = new str_t;
-	newElement->word = toAdd;
-	newElement->next = list->head;
-	list->head = newElement;
+	if (!contains_item(list, toAdd))
+	{
+		str_t * newElement = new str_t;
+		newElement->word = toAdd;
+		newElement->next = list->head;
+		list->head = newElement;
+	}
 }
 
 void del_item(set_of_str_t * &list, string toDelete)

@@ -39,9 +39,4 @@ int main(int argc, char *argv[])
     destroy_set_of_str(tasty_set);
     destroy_set_of_str(fruity_set);
     destroy_set_of_str(both_set);
-
-    set_of_str_t * test = create_set_of_str();
-    add_item(test, "test1");
-    iterator_t * it = create_iterator(test);
-    str_t * first = it->getFirst();
 }
