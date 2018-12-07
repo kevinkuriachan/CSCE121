@@ -2,4 +2,4 @@ compiling and linking
 
 g++ -c header.cpp -o header.o
 g++ -c program.cpp -o program.o
-g++ progam.o prompt.o -o program
+g++ progam.o header.o -o program
