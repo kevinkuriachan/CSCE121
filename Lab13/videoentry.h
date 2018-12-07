@@ -5,8 +5,11 @@
 
 class VideoEntry: public PlaylistEntry
 {
+	public:
 
 
+	protected:
+		int resolution;
 }
 
 #endif 

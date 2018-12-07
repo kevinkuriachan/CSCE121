@@ -16,21 +16,4 @@ Trailer::Trailer(string reg)
 
 Trailer::~Trailer()
 {
-	//cout << "insert trailer deconstructor" << endl;
 }
-/*
-void Trailer::setReg(string reg)
-{
-	licensePlate = reg;
-}
-
-string Trailer::getReg()
-{
-	return licensePlate;
-}
-
-float Trailer::getFee()
-{
-	return regFee;
-}
-*/

@@ -12,8 +12,6 @@ class Car : public Vehicle
 	virtual ~Car();
 
 	private:
-
-
 };
 
 #endif 

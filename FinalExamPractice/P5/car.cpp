@@ -16,5 +16,4 @@ Car::Car(string reg)
 
 Car::~Car()
 {
-	//cout << "insert car deconstructor" << endl;
 }
